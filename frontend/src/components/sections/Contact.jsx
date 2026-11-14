@@ -72,7 +72,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-[100dvh] lg:h-[100dvh] relative bg-transparent flex flex-col justify-between pt-16 sm:pt-20 pb-5 px-5 sm:px-8 overflow-hidden z-10"
+      className="min-h-[100dvh] lg:h-[100dvh] relative bg-transparent flex flex-col justify-between pt-16 sm:pt-20 pb-5 px-4 sm:px-8 overflow-hidden z-10"
     >
       {/* ── Subtle 3D Ambient Element in the Background ── */}
       <ContactScene />
@@ -321,7 +321,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="flex items-center gap-4 font-mono text-[11px]">
+        <div className="flex flex-wrap items-center justify-center sm:justify-end gap-3 sm:gap-4 font-mono text-[11px]">
           <a
             href="https://github.com/fahimistiaq456-netizen"
             target="_blank"

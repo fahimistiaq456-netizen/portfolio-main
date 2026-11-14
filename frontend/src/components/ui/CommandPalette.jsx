@@ -177,12 +177,12 @@ export default function CommandPalette() {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[100] flex items-start justify-center pt-[14vh] px-4 bg-black/70 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-start justify-center pt-[8vh] sm:pt-[14vh] px-3 sm:px-4 bg-black/70 backdrop-blur-sm"
       onClick={(e) => {
         if (e.target === overlayRef.current) closePalette()
       }}
     >
-      <div className="relative w-full max-w-lg rounded-xl overflow-hidden border border-white/10 bg-[#0d0f17] shadow-2xl flex flex-col max-h-[55vh]">
+      <div className="relative w-full max-w-lg rounded-xl overflow-hidden border border-white/10 bg-[#0d0f17] shadow-2xl flex flex-col max-h-[70vh] sm:max-h-[55vh]">
         
         {/* Search Input Bar */}
         <div className="flex items-center gap-3 px-4 py-3 border-b border-white/[0.08] bg-white/[0.02]">

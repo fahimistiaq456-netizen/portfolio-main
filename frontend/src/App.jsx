@@ -199,7 +199,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="relative min-h-screen bg-[#090a0f] text-slate-100 selection:bg-white/20 selection:text-white">
+    <div className="relative min-h-screen bg-[#090a0f] text-slate-100 selection:bg-white/20 selection:text-white overflow-x-hidden">
       {/* Minimal Scroll Progress Bar */}
       <motion.div
         style={{ scaleX }}

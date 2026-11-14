@@ -3,16 +3,16 @@ function DeviceMockup({ project }) {
 
   if (isPhone) {
     return (
-      <div className="relative w-full h-full flex items-center justify-center p-3 bg-gradient-to-b from-[#131726] to-[#07090f] overflow-hidden select-none">
+      <div className="relative w-full h-full flex items-center justify-center p-2 sm:p-3 bg-gradient-to-b from-[#131726] to-[#07090f] overflow-hidden select-none">
         {/* Ambient radial glow */}
         <div className="absolute w-44 h-44 rounded-full bg-sky-500/15 blur-2xl pointer-events-none" />
 
         {/* Smart Clean Smartphone Mockup */}
-        <div className="relative z-10 h-full aspect-[9/18.5] rounded-[1.75rem] border-2 border-white/25 bg-[#12141e] p-1 shadow-[0_15px_35px_rgba(0,0,0,0.85)] flex flex-col transition-transform duration-300 group-hover:scale-[1.04]">
-          <div className="relative w-full h-full rounded-[1.45rem] overflow-hidden bg-black flex flex-col">
+        <div className="relative z-10 h-full aspect-[9/18.5] rounded-[1.5rem] sm:rounded-[1.75rem] border-2 border-white/25 bg-[#12141e] p-1 shadow-[0_15px_35px_rgba(0,0,0,0.85)] flex flex-col transition-transform duration-300 group-hover:scale-[1.04]">
+          <div className="relative w-full h-full rounded-[1.25rem] sm:rounded-[1.45rem] overflow-hidden bg-black flex flex-col">
             {/* Dynamic Island Notch */}
-            <div className="absolute top-1.5 left-1/2 -translate-x-1/2 z-20 w-11 h-2.5 bg-black rounded-full border border-white/10 flex items-center justify-end px-1.5 shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+            <div className="absolute top-1.5 left-1/2 -translate-x-1/2 z-20 w-9 sm:w-11 h-2 sm:h-2.5 bg-black rounded-full border border-white/10 flex items-center justify-end px-1 sm:px-1.5 shadow-sm">
+              <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-sky-400 animate-pulse" />
             </div>
 
             {/* Screen Screenshot */}
@@ -23,7 +23,7 @@ function DeviceMockup({ project }) {
             />
 
             {/* Bottom Home Indicator Bar */}
-            <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 z-20 w-10 h-0.5 bg-white/40 rounded-full" />
+            <div className="absolute bottom-1 sm:bottom-1.5 left-1/2 -translate-x-1/2 z-20 w-8 sm:w-10 h-0.5 bg-white/40 rounded-full" />
             
             {/* Screen Glass Specular Highlight */}
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] pointer-events-none" />
@@ -35,31 +35,31 @@ function DeviceMockup({ project }) {
 
   // Smart Clean Browser Window Mockup
   return (
-    <div className="relative w-full h-full p-3 sm:p-4 bg-gradient-to-b from-[#131726] to-[#07090f] flex items-center justify-center overflow-hidden select-none">
+    <div className="relative w-full h-full p-2.5 sm:p-4 bg-gradient-to-b from-[#131726] to-[#07090f] flex items-center justify-center overflow-hidden select-none">
       {/* Ambient radial glow */}
       <div className="absolute w-60 h-40 rounded-full bg-teal-500/10 blur-2xl pointer-events-none" />
 
       {/* Floating Browser Mockup Frame */}
-      <div className="relative z-10 w-full h-full rounded-xl border border-white/20 bg-[#0d1019] shadow-[0_15px_35px_rgba(0,0,0,0.85)] overflow-hidden flex flex-col transition-transform duration-300 group-hover:scale-[1.02]">
+      <div className="relative z-10 w-full h-full rounded-lg sm:rounded-xl border border-white/20 bg-[#0d1019] shadow-[0_15px_35px_rgba(0,0,0,0.85)] overflow-hidden flex flex-col transition-transform duration-300 group-hover:scale-[1.02]">
         
         {/* Browser Chrome Header */}
-        <div className="h-7 px-3 bg-[#141826] border-b border-white/[0.08] flex items-center justify-between shrink-0">
+        <div className="h-6 sm:h-7 px-2.5 sm:px-3 bg-[#141826] border-b border-white/[0.08] flex items-center justify-between shrink-0">
           {/* Traffic Lights */}
-          <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#ef4444]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#eab308]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e]" />
+          <div className="flex items-center gap-1 sm:gap-1.5">
+            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#ef4444]" />
+            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#eab308]" />
+            <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#22c55e]" />
           </div>
 
           {/* Centered URL Capsule */}
-          <div className="px-3 py-0.5 rounded-md bg-black/40 border border-white/10 text-[10px] font-mono text-slate-300 flex items-center gap-1.5 max-w-[200px] truncate">
-            <svg className="w-2.5 h-2.5 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <div className="px-2 sm:px-3 py-0.5 rounded-md bg-black/40 border border-white/10 text-[9px] sm:text-[10px] font-mono text-slate-300 flex items-center gap-1 sm:gap-1.5 max-w-[140px] sm:max-w-[200px] truncate">
+            <svg className="w-2 sm:w-2.5 h-2 sm:h-2.5 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 2a4 4 0 00-4 4v2H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-1V6a4 4 0 00-4-4zm2 6V6a2 2 0 10-4 0v2h4z" clipRule="evenodd" />
             </svg>
             <span className="truncate">{project.deviceUrl || 'preview'}</span>
           </div>
 
-          <div className="w-8" />
+          <div className="w-4 sm:w-8" />
         </div>
 
         {/* Screen Area */}
@@ -105,9 +105,9 @@ export default function ProjectCard({ project, index }) {
         </div>
 
         {/* ── Content Body ── */}
-        <div className="p-6 sm:p-7">
+        <div className="p-4 sm:p-6 lg:p-7">
           {/* Status & Category Bar (Clean & Unobstructed) */}
-          <div className="flex items-center justify-between gap-2 mb-3">
+          <div className="flex items-center justify-between gap-2 mb-2.5 sm:mb-3">
             <div className="flex items-center gap-2">
               {num && (
                 <span className="text-sky-400 font-mono font-bold text-xs select-none">
@@ -134,34 +134,34 @@ export default function ProjectCard({ project, index }) {
           </div>
 
           {/* Project Title with External Arrow */}
-          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2.5">
+          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-tight mb-2 sm:mb-2.5">
             <a
               href={primaryHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 hover:text-sky-300 transition-colors duration-150"
+              className="inline-flex items-center gap-1.5 sm:gap-2 hover:text-sky-300 transition-colors duration-150"
             >
               <span>{project.title}</span>
-              <span className="text-slate-500 group-hover:text-sky-300 transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-lg">
+              <span className="text-slate-500 group-hover:text-sky-300 transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-base sm:text-lg">
                 ↗
               </span>
             </a>
           </h3>
 
           {/* Description */}
-          <p className="text-slate-400 text-sm leading-relaxed mb-5">
+          <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">
             {project.description}
           </p>
 
           {/* Key Architecture Highlights */}
           {project.highlights && project.highlights.length > 0 && (
-            <div className="mb-5 pt-3.5 border-t border-white/[0.08]">
-              <p className="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">
+            <div className="mb-4 sm:mb-5 pt-3 sm:pt-3.5 border-t border-white/[0.08]">
+              <p className="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1.5 sm:mb-2">
                 Engineering Highlights
               </p>
-              <ul className="space-y-1.5">
+              <ul className="space-y-1 sm:space-y-1.5">
                 {project.highlights.slice(0, 3).map((highlight, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-xs text-slate-300">
+                  <li key={idx} className="flex items-start gap-2 text-[11px] sm:text-xs text-slate-300">
                     <span className="text-sky-400 select-none font-bold mt-0.5">›</span>
                     <span className="leading-snug">{highlight}</span>
                   </li>
@@ -171,11 +171,11 @@ export default function ProjectCard({ project, index }) {
           )}
 
           {/* Tech Stack Monospace Pills */}
-          <div className="flex flex-wrap gap-1.5 mb-6">
+          <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-4 sm:mb-6">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2.5 py-1 rounded-md text-xs font-mono text-slate-300 bg-white/[0.04] border border-white/10 backdrop-blur-md"
+                className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md text-[11px] sm:text-xs font-mono text-slate-300 bg-white/[0.04] border border-white/10 backdrop-blur-md"
               >
                 {tag}
               </span>
@@ -185,7 +185,7 @@ export default function ProjectCard({ project, index }) {
       </div>
 
       {/* ── Bottom Action Bar ── */}
-      <div className="px-6 sm:px-7 pb-6 pt-3.5 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="px-4 sm:px-6 lg:px-7 pb-4 sm:pb-6 pt-3 sm:pt-3.5 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 text-xs">
         <div className="flex items-center gap-2.5">
           {project.live ? (
             <a

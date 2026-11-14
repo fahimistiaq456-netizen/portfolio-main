@@ -13,16 +13,16 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[100dvh] lg:h-[100dvh] flex flex-col justify-between items-center pt-24 pb-8 sm:pt-28 sm:pb-8 lg:py-0 overflow-hidden bg-minimal-dots"
+      className="relative min-h-[100dvh] lg:h-[100dvh] flex flex-col justify-between items-center pt-20 pb-6 sm:pt-28 sm:pb-8 lg:py-0 overflow-hidden bg-minimal-dots"
     >
       {/* Invisible spacer on desktop to balance the bottom scroll indicator */}
       <div className="hidden lg:block h-12" aria-hidden="true" />
 
-      <div className="relative max-w-6xl mx-auto px-5 sm:px-6 w-full z-10 my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 w-full z-10 my-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 lg:gap-12 items-center">
 
           {/* Left Column: Minimal, Powerful Copy & Smooth Name Reveal */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
+          <div className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-1">
             
             {/* Status Indicator Badge with micro-pulse */}
             <motion.div
@@ -71,7 +71,7 @@ export default function Hero() {
               transition={{ duration: 0.55, delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
               className="mb-3 sm:mb-4"
             >
-              <h2 className="text-base sm:text-lg md:text-xl font-semibold text-slate-200 tracking-tight flex items-center justify-center lg:justify-start gap-2 flex-wrap">
+              <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-slate-200 tracking-tight flex items-center justify-center md:justify-start gap-2 flex-wrap">
                 <span>Android &amp; Software Engineer</span>
                 <span className="text-sky-400 font-bold">•</span>
                 <span className="text-slate-400 font-normal">Kotlin &amp; Jetpack Compose</span>
@@ -83,7 +83,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
-              className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-lg mb-6 sm:mb-7 font-normal"
+              className="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed max-w-lg mb-6 sm:mb-7 font-normal"
             >
               Architecting production-grade native Android applications with Kotlin, Compose, and clean MVVM architecture, backed by modern REST APIs and intelligent retrieval systems.
             </motion.p>
@@ -93,13 +93,13 @@ export default function Hero() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-3 w-full sm:w-auto"
+              className="flex flex-wrap items-center justify-center md:justify-start gap-2.5 sm:gap-3 w-full sm:w-auto"
             >
               <motion.a
                 href="#projects"
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="btn-primary group py-2.5 px-5 text-xs inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-white/5"
+                className="btn-primary group py-2.5 px-5 text-xs inline-flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-white/5"
               >
                 <span>Selected Work</span>
                 <span className="group-hover:translate-y-0.5 transition-transform duration-200">↓</span>
@@ -109,7 +109,7 @@ export default function Hero() {
                 href="#contact"
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="btn-secondary py-2.5 px-5 text-xs cursor-pointer"
+                className="btn-secondary py-2.5 px-5 text-xs cursor-pointer inline-flex items-center justify-center"
               >
                 Get In Touch
               </motion.a>
@@ -119,7 +119,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ x: 2 }}
-                className="px-3 py-2 text-xs font-mono text-slate-400 hover:text-white transition-colors duration-150 inline-flex items-center gap-1"
+                className="px-3 py-2 text-xs font-mono text-slate-400 hover:text-white transition-colors duration-150 inline-flex items-center justify-center gap-1"
               >
                 <span>Resume</span>
                 <span>↗</span>
@@ -128,7 +128,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Compact 3D Perspective Portrait */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end w-full order-1 lg:order-2">
+          <div className="md:col-span-5 flex justify-center md:justify-end w-full order-1 md:order-2">
             <HeroPortrait />
           </div>
 

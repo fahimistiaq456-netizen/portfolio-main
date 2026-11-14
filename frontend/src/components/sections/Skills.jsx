@@ -84,41 +84,41 @@ const EDUCATION = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 sm:py-32 relative bg-transparent">
-      <div className="max-w-5xl mx-auto px-5 sm:px-6">
+    <section id="skills" className="py-16 sm:py-24 lg:py-32 relative bg-transparent">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <ScrollReveal yOffset={20} className="mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-[11px] font-mono text-slate-300 uppercase tracking-wider mb-4">
+        <ScrollReveal yOffset={20} className="mb-10 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-[10px] sm:text-[11px] font-mono text-slate-300 uppercase tracking-wider mb-3 sm:mb-4">
             Capabilities &amp; Stack
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3 sm:mb-4">
             Engineering capabilities.
           </h2>
-          <p className="text-slate-400 text-base max-w-xl leading-relaxed">
+          <p className="text-slate-400 text-xs sm:text-sm md:text-base max-w-xl leading-relaxed">
             Specialized in native Android engineering, backed by solid backend architecture and intelligent system design.
           </p>
         </ScrollReveal>
 
         {/* Minimalist Editorial Rows — No Heavy Card Boxes */}
-        <div className="divide-y divide-white/[0.08] border-y border-white/[0.08] mb-16">
+        <div className="divide-y divide-white/[0.08] border-y border-white/[0.08] mb-12 sm:mb-16">
           {CAPABILITIES.map((item, idx) => (
             <ScrollReveal
               key={item.category}
               yOffset={16}
               delay={idx * 0.06}
-              className="py-8 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start group hover:bg-white/[0.015] transition-colors duration-200 -mx-4 px-4 rounded-xl"
+              className="py-6 sm:py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 md:gap-8 items-start group hover:bg-white/[0.015] transition-colors duration-200 -mx-2 px-2 sm:-mx-4 sm:px-4 rounded-xl"
             >
               {/* Left Column: Number & Category Title */}
-              <div className="md:col-span-4 flex items-start gap-4">
+              <div className="md:col-span-4 flex items-start gap-3 sm:gap-4">
                 <span className="font-mono text-xs text-sky-400 mt-1 select-none">
                   {item.num}
                 </span>
                 <div>
-                  <h3 className="text-xl font-bold text-white tracking-tight group-hover:text-sky-300 transition-colors duration-150">
+                  <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight group-hover:text-sky-300 transition-colors duration-150">
                     {item.category}
                   </h3>
-                  <p className="text-xs font-mono text-slate-400 mt-1">
+                  <p className="text-xs font-mono text-slate-400 mt-0.5 sm:mt-1">
                     {item.headline}
                   </p>
                 </div>
@@ -126,7 +126,7 @@ export default function Skills() {
 
               {/* Right Column: Narrative Description & Clean Tech Tags */}
               <div className="md:col-span-8 flex flex-col justify-between">
-                <p className="text-sm text-slate-300 leading-relaxed mb-4">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3 sm:mb-4">
                   {item.description}
                 </p>
 
@@ -134,7 +134,7 @@ export default function Skills() {
                   {item.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 rounded-md text-xs font-mono text-slate-300 bg-white/[0.03] border border-white/[0.06] hover:border-white/20 transition-colors duration-150"
+                      className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md text-[11px] sm:text-xs font-mono text-slate-300 bg-white/[0.03] border border-white/[0.06] hover:border-white/20 transition-colors duration-150"
                     >
                       {tech}
                     </span>
@@ -147,15 +147,15 @@ export default function Skills() {
 
         {/* Credentials / Education & Experience Bar */}
         <ScrollReveal yOffset={20} delay={0.1} className="pt-2">
-          <p className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-6">
+          <p className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-4 sm:mb-6">
             Background &amp; Credentials
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {EDUCATION.map((edu) => (
               <div
                 key={edu.title}
-                className="p-6 rounded-2xl border border-white/[0.12] border-t-white/[0.22] bg-white/[0.03] backdrop-blur-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:border-white/25 hover:bg-white/[0.05] transition-all duration-200"
+                className="p-5 sm:p-6 rounded-2xl border border-white/[0.12] border-t-white/[0.22] bg-white/[0.03] backdrop-blur-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:border-white/25 hover:bg-white/[0.05] transition-all duration-200"
               >
                 <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-mono font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 mb-3">
                   {edu.tag}

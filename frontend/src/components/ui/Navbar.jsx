@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import portraitImg from '../../assets/siam_portrait.png'
 
 const NAV_LINKS = [
@@ -179,31 +180,53 @@ export default function Navbar() {
 
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      {menuOpen && (
-        <div className="md:hidden border-b border-white/[0.08] bg-[#090a0f]/95 backdrop-blur-xl px-6 py-5 mt-3 space-y-3">
-          {NAV_LINKS.map(({ href, label }) => (
-            <a
-              key={href}
-              href={href}
-              onClick={(e) => handleNavClick(e, href)}
-              className="block text-sm font-medium text-slate-300 hover:text-white py-1"
-            >
-              {label}
-            </a>
-          ))}
-          <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-semibold text-white py-1"
-            >
-              Download Resume (PDF) ↗
-            </a>
-          </div>
-        </div>
-      )}
+      {/* Mobile Menu Dropdown with Smooth Animation */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="md:hidden overflow-hidden border-b border-white/[0.12] bg-[#090a0f]/95 backdrop-blur-2xl px-5 sm:px-6 py-4 mt-2 shadow-2xl"
+          >
+            <div className="space-y-1">
+              {NAV_LINKS.map(({ href, label }) => {
+                const id = href.replace('#', '')
+                const isActive = active === id
+                return (
+                  <a
+                    key={href}
+                    href={href}
+                    onClick={(e) => handleNavClick(e, href)}
+                    className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                      isActive
+                        ? 'bg-white/10 text-white font-semibold border border-white/10'
+                        : 'text-slate-300 hover:text-white hover:bg-white/[0.04]'
+                    }`}
+                  >
+                    <span>{label}</span>
+                    {isActive && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+                    )}
+                  </a>
+                )
+              })}
+            </div>
+
+            <div className="pt-3 mt-3 border-t border-white/[0.08] flex items-center justify-between gap-3">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary w-full text-center text-xs py-2.5 px-4 font-semibold"
+              >
+                Download Resume (PDF) ↗
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

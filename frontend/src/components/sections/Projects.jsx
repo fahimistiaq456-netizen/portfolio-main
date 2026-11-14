@@ -28,32 +28,32 @@ export default function Projects({ projects = [] }) {
   })
 
   return (
-    <section id="projects" className="py-24 sm:py-32 relative bg-transparent">
-      <div className="max-w-5xl mx-auto px-5 sm:px-6">
+    <section id="projects" className="py-16 sm:py-24 lg:py-32 relative bg-transparent">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <ScrollReveal yOffset={20} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <ScrollReveal yOffset={20} className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-10 sm:mb-14">
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-[11px] font-mono text-slate-300 uppercase tracking-wider mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-[10px] sm:text-[11px] font-mono text-slate-300 uppercase tracking-wider mb-3 sm:mb-4">
               Selected Work
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3 sm:mb-4">
               Featured work.
             </h2>
-            <p className="text-slate-400 text-base leading-relaxed">
+            <p className="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed">
               Production-grade native Android software, distributed backend architectures, and intelligent retrieval systems with live deployments.
             </p>
           </div>
 
           {/* Minimal Filter Pills with Count Badges */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {categories.map((cat) => {
               const isActive = activeFilter === cat.id
               return (
                 <button
                   key={cat.id}
                   onClick={() => setActiveFilter(cat.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-150 cursor-pointer backdrop-blur-md ${
+                  className={`px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium transition-all duration-150 cursor-pointer backdrop-blur-md ${
                     isActive
                       ? 'bg-white text-[#090a0f] font-semibold shadow-md'
                       : 'bg-white/[0.04] border border-white/10 text-slate-300 hover:text-white hover:border-white/20 hover:bg-white/[0.08]'
@@ -67,7 +67,7 @@ export default function Projects({ projects = [] }) {
         </ScrollReveal>
 
         {/* 2-Column Responsive Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-7">
           {filteredProjects.map((project, idx) => (
             <ProjectCard
               key={project.id}
