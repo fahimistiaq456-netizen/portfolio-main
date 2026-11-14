@@ -1,0 +1,49 @@
+[
+  {
+    "category": "Mobile Development",
+    "icon": "📱",
+    "color": "#10b981",
+    "skills": [
+      { "name": "Kotlin", "level": 92 },
+      { "name": "Jetpack Compose", "level": 90 },
+      { "name": "Android Studio", "level": 90 },
+      { "name": "Java", "level": 85 },
+      { "name": "MVVM Architecture", "level": 88 }
+    ]
+  },
+  {
+    "category": "Languages & Core",
+    "icon": "💻",
+    "color": "#d4af37",
+    "skills": [
+      { "name": "Kotlin", "level": 92 },
+      { "name": "Java", "level": 88 },
+      { "name": "Python", "level": 85 },
+      { "name": "C / C++", "level": 80 },
+      { "name": "Object-Oriented Programming (OOP)", "level": 90 },
+      { "name": "Problem Solving", "level": 88 }
+    ]
+  },
+  {
+    "category": "Tools & Data",
+    "icon": "🗄️",
+    "color": "#818cf8",
+    "skills": [
+      { "name": "Android Studio", "level": 90 },
+      { "name": "Git & GitHub", "level": 88 },
+      { "name": "SQL", "level": 82 },
+      { "name": "REST APIs", "level": 85 }
+    ]
+  },
+  {
+    "category": "Academic & Special Interests",
+    "icon": "🧠",
+    "color": "#f472b6",
+    "skills": [
+      { "name": "Android Application Development", "level": 92 },
+      { "name": "Artificial Intelligence", "level": 82 },
+      { "name": "Machine Learning", "level": 80 },
+      { "name": "Software Engineering Architecture", "level": 85 }
+    ]
+  }
+]

@@ -1,0 +1,78 @@
+[
+  {
+    "id": "trustrag",
+    "title": "TrustRAG Local Lab",
+    "subtitle": "Local LLM Laboratory & Source-First RAG",
+    "description": "Interactive Local LLM laboratory featuring normal chat, verified RAG answers, and source-first hybrid retrieval with Ollama, vector search, and citation grounding.",
+    "category": "AI / ML",
+    "tags": ["RAG", "Ollama", "Next.js", "Vector Search", "TypeScript", "Tailwind CSS"],
+    "features": [
+      "Local LLM laboratory with multi-model inference",
+      "Source-first hybrid retrieval with citation grounding",
+      "Verified contextual question answering"
+    ],
+    "github": "https://github.com/fahimistiaq456-netizen",
+    "live": "https://trustrag-kappa.vercel.app/",
+    "featured": true,
+    "status": "Live Deployed",
+    "color": "#10b981"
+  },
+  {
+    "id": "nexus-rag",
+    "title": "Nexus Enterprise RAG Assistant",
+    "subtitle": "Knowledge Hub & Semantic Discovery",
+    "description": "Scalable enterprise knowledge assistant enabling users to search organizational documents and get verified answers with semantic citation graphs, passage studio, and analytics.",
+    "category": "Enterprise AI",
+    "tags": ["Next.js", "Enterprise AI", "Vector DB", "Semantic Search", "TypeScript", "RAG Pipeline"],
+    "features": [
+      "Semantic Discovery & Passage Studio with citation graphs",
+      "Enterprise document ingestion and vector retrieval",
+      "Enterprise Observability & query analytics"
+    ],
+    "github": "https://github.com/fahimistiaq456-netizen",
+    "live": "https://enterprise-rag-assistant-liard.vercel.app/",
+    "featured": true,
+    "status": "Live Deployed",
+    "color": "#06b6d4"
+  },
+  {
+    "id": "travel-world",
+    "title": "Travel World Demo",
+    "subtitle": "Full-Stack Travel & Web App",
+    "description": "Modern travel showcase web application featuring destination exploration, trip planning, and an immersive UI with dynamic animations. Live deployed on Vercel.",
+    "category": "Web",
+    "tags": ["React", "Next.js", "Tailwind CSS", "Vercel", "UI/UX", "Web"],
+    "features": [
+      "Immersive destination exploration with dynamic UI",
+      "Trip planning interface with modern animations",
+      "Responsive design optimized for all devices",
+      "Live deployed on Vercel for instant access"
+    ],
+    "github": "https://github.com/fahimistiaq456-netizen",
+    "live": "https://travel-world-demo.vercel.app",
+    "featured": true,
+    "status": "Live Deployed",
+    "color": "#f59e0b"
+  },
+  {
+    "id": "my-business-app",
+    "title": "MyBusinessApp",
+    "subtitle": "Full-Stack Android (Compose) & Spring Boot",
+    "description": "Full-stack enterprise Android application built with 100% Jetpack Compose and Material 3, paired with a Spring Boot REST API & MongoDB backend. Features custom dynamic arc gesture panels, home screen widgets, live weather API, and secure auth.",
+    "category": "Mobile",
+    "tags": ["Kotlin", "Jetpack Compose", "Spring Boot", "MongoDB", "Material 3", "Coroutines", "Retrofit"],
+    "features": [
+      "100% Jetpack Compose UI with Material 3 Glassmorphism",
+      "MVVM + Unidirectional Data Flow (UDF) + Repository Pattern",
+      "Dynamic Arc side gesture panel with Canvas morphing",
+      "Home screen widget with financial quick stats & deep-links",
+      "Spring Boot 3.3.4 REST API with MongoDB & BCrypt security"
+    ],
+    "github": "https://github.com/fahimistiaq456-netizen/MyBusinessApp",
+    "live": "https://fahimistiaq456-netizen.github.io/MyBusinessApp/",
+    "apk": "https://github.com/fahimistiaq456-netizen/MyBusinessApp/releases/download/v1.0.0/MyBusinessApp-v1.0.0.apk",
+    "featured": true,
+    "status": "Live Demo & APK",
+    "color": "#10b981"
+  }
+]

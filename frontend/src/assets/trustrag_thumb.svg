@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c18" />
+      <stop offset="50%" stop-color="#0b1329" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#14b8a6" />
+      <stop offset="100%" stop-color="#2dd4bf" />
+    </linearGradient>
+
+    <linearGradient id="indigoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#111d33" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0c1424" stop-opacity="0.95" />
+    </linearGradient>
+
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <pattern id="cyberGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(20, 184, 166, 0.08)" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="600" fill="url(#bgGrad)" />
+  <rect width="800" height="600" fill="url(#cyberGrid)" />
+
+  <!-- Ambient Glow Blobs -->
+  <circle cx="200" cy="180" r="160" fill="#14b8a6" opacity="0.12" filter="url(#neonGlow)" />
+  <circle cx="650" cy="420" r="180" fill="#6366f1" opacity="0.1" filter="url(#neonGlow)" />
+
+  <!-- IDE / App Window Container -->
+  <g transform="translate(40, 35)">
+    <!-- Outer Window Shadow & Border -->
+    <rect width="720" height="530" rx="16" fill="#080f1d" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.5" />
+
+    <!-- Window Titlebar -->
+    <path d="M 0 16 Q 0 0 16 0 L 704 0 Q 720 0 720 16 L 720 45 L 0 45 Z" fill="#0c162a" />
+    <line x1="0" y1="45" x2="720" y2="45" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+
+    <!-- Window Traffic Lights -->
+    <circle cx="25" cy="22" r="5.5" fill="#ef4444" />
+    <circle cx="43" cy="22" r="5.5" fill="#f59e0b" />
+    <circle cx="61" cy="22" r="5.5" fill="#10b981" />
+
+    <!-- Window Title -->
+    <text x="360" y="27" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600" text-anchor="middle" letter-spacing="1">
+      TrustRAG Local Lab • Ollama Multi-Model Engine
+    </text>
+
+    <!-- Status Indicator Pill -->
+    <g transform="translate(605, 12)">
+      <rect width="95" height="22" rx="11" fill="rgba(16, 185, 129, 0.15)" stroke="rgba(52, 211, 153, 0.5)" stroke-width="1" />
+      <circle cx="12" cy="11" r="3.5" fill="#34d399" />
+      <text x="24" y="15" fill="#34d399" font-family="sans-serif" font-size="9" font-weight="bold" letter-spacing="0.5">LOCAL LIVE</text>
+    </g>
+
+    <!-- Query Input Bar -->
+    <g transform="translate(25, 65)">
+      <rect width="670" height="48" rx="10" fill="#0a1222" stroke="rgba(20, 184, 166, 0.35)" stroke-width="1.2" />
+      <circle cx="28" cy="24" r="8" fill="rgba(20, 184, 166, 0.2)" />
+      <text x="24" y="28" fill="#2dd4bf" font-family="sans-serif" font-size="12" font-weight="bold">⚡</text>
+      <text x="48" y="29" fill="#f8fafc" font-family="'Inter', sans-serif" font-size="13" font-weight="500">
+        "Summarize cross-quarter revenue variance with citation grounding"
+      </text>
+      <!-- Mode Badge -->
+      <g transform="translate(560, 10)">
+        <rect width="95" height="28" rx="6" fill="#14b8a6" />
+        <text x="47" y="18" fill="#040810" font-family="sans-serif" font-size="10" font-weight="900" text-anchor="middle" letter-spacing="0.5">HYBRID RAG</text>
+      </g>
+    </g>
+
+    <!-- Two-Panel Workspace -->
+    <!-- Left Column: Source Citations & Retrieval Chunks -->
+    <g transform="translate(25, 130)">
+      <rect width="280" height="375" rx="12" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+      
+      <!-- Panel Header -->
+      <text x="18" y="32" fill="#2dd4bf" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" letter-spacing="1">
+        SOURCE-FIRST RETRIEVAL
+      </text>
+      <line x1="18" y1="44" x2="262" y2="44" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+
+      <!-- Chunk Item 1 -->
+      <g transform="translate(16, 58)">
+        <rect width="248" height="68" rx="8" fill="#0a1324" stroke="rgba(20, 184, 166, 0.3)" stroke-width="1" />
+        <text x="12" y="22" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold">📄 Q3_Earnings_Report.pdf</text>
+        <text x="12" y="42" fill="#94a3b8" font-family="sans-serif" font-size="9.5">Vector Cosine Similarity: 0.942</text>
+        <!-- Similarity Bar -->
+        <rect x="12" y="52" width="224" height="4" rx="2" fill="rgba(255,255,255,0.08)" />
+        <rect x="12" y="52" width="210" height="4" rx="2" fill="#2dd4bf" />
+      </g>
+
+      <!-- Chunk Item 2 -->
+      <g transform="translate(16, 138)">
+        <rect width="248" height="68" rx="8" fill="#0a1324" stroke="rgba(99, 102, 241, 0.3)" stroke-width="1" />
+        <text x="12" y="22" fill="#818cf8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold">📄 Financial_Model_v4.xlsx</text>
+        <text x="12" y="42" fill="#94a3b8" font-family="sans-serif" font-size="9.5">Vector Cosine Similarity: 0.887</text>
+        <rect x="12" y="52" width="224" height="4" rx="2" fill="rgba(255,255,255,0.08)" />
+        <rect x="12" y="52" width="198" height="4" rx="2" fill="#818cf8" />
+      </g>
+
+      <!-- Model Specs Card -->
+      <g transform="translate(16, 220)">
+        <rect width="248" height="135" rx="8" fill="rgba(14, 25, 45, 0.6)" stroke="rgba(255,255,255,0.05)" />
+        <text x="12" y="24" fill="#cbd5e1" font-family="sans-serif" font-size="10.5" font-weight="bold">Inference Telemetry</text>
+        <text x="12" y="50" fill="#64748b" font-family="sans-serif" font-size="9.5">Active LLM: <tspan fill="#f1f5f9" font-weight="bold">Llama 3.2 (3B)</tspan></text>
+        <text x="12" y="74" fill="#64748b" font-family="sans-serif" font-size="9.5">Context Tokens: <tspan fill="#2dd4bf" font-weight="bold">4,096 tokens</tspan></text>
+        <text x="12" y="98" fill="#64748b" font-family="sans-serif" font-size="9.5">Retrieval Latency: <tspan fill="#34d399" font-weight="bold">14.2 ms</tspan></text>
+        <text x="12" y="122" fill="#64748b" font-family="sans-serif" font-size="9.5">Verification Engine: <tspan fill="#a78bfa" font-weight="bold">Strict Grounding</tspan></text>
+      </g>
+    </g>
+
+    <!-- Right Column: Verified Answer Stream -->
+    <g transform="translate(325, 130)">
+      <rect width="370" height="375" rx="12" fill="url(#cardGrad)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+
+      <!-- Answer Header -->
+      <g transform="translate(20, 18)">
+        <rect width="135" height="24" rx="12" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="1" />
+        <circle cx="12" cy="12" r="4" fill="#10b981" />
+        <text x="24" y="16" fill="#34d399" font-family="sans-serif" font-size="10" font-weight="bold">99.4% VERIFIED RAG</text>
+      </g>
+      <text x="350" y="34" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">Ollama Local</text>
+      <line x1="20" y1="52" x2="350" y2="52" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+
+      <!-- AI Response Paragraph with Inline Citation Badges -->
+      <text x="20" y="80" fill="#f1f5f9" font-family="'Inter', sans-serif" font-size="12" font-weight="600" line-height="1.6">
+        According to Q3 Financial Audits:
+      </text>
+
+      <text x="20" y="112" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="11.5" line-height="1.7">
+        Operating revenue experienced a 
+        <tspan fill="#34d399" font-weight="bold"> +24.8% YoY surge</tspan>, driven by
+      </text>
+      <text x="20" y="134" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="11.5">
+        enterprise cloud adoption. Cloud infrastructure gross
+      </text>
+      <text x="20" y="156" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="11.5">
+        margins expanded by 
+        <tspan fill="#38bdf8" font-weight="bold"> 310 bps</tspan>.
+      </text>
+
+      <!-- Grounded Citation Box -->
+      <g transform="translate(20, 180)">
+        <rect width="330" height="85" rx="8" fill="#08101e" stroke="rgba(20, 184, 166, 0.4)" stroke-width="1" />
+        <text x="14" y="24" fill="#2dd4bf" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold">
+          [CITATION #1 • Q3_Earnings_Report.pdf:p.14]
+        </text>
+        <text x="14" y="46" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10" font-style="italic">
+          "Consolidated net revenue increased to $48.2M reflecting
+        </text>
+        <text x="14" y="64" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="10" font-style="italic">
+          24.8% annual expansion against the previous fiscal baseline."
+        </text>
+      </g>
+
+      <!-- Live Interactive Badge -->
+      <g transform="translate(20, 285)">
+        <rect width="330" height="65" rx="8" fill="rgba(20, 184, 166, 0.08)" stroke="rgba(20, 184, 166, 0.25)" stroke-dasharray="4 4" />
+        <text x="165" y="28" fill="#2dd4bf" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" text-anchor="middle">
+          ⚡ Interactive Live Deployed Vercel App
+        </text>
+        <text x="165" y="48" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="9.5" text-anchor="middle">
+          https://trustrag-kappa.vercel.app
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+
