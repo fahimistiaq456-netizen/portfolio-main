@@ -18,6 +18,7 @@ import trustragPreview from './assets/projects/trustrag_preview.png'
 import nexusPreview from './assets/projects/nexus_preview.png'
 import wildhavenHero from './assets/projects/wildhaven_hero.jpg'
 import wildhavenBooking from './assets/projects/wildhaven_booking.png'
+import noyamatiPreview from './assets/projects/noyamati_preview.png'
 
 // ── Curated Projects Data with High-Res Themed Previews & Engineering Details ──
 const PROJECTS_DATA = [
@@ -82,6 +83,27 @@ const PROJECTS_DATA = [
     tags: ['React', 'Next.js', 'Tailwind CSS', 'Vercel', 'UI/UX'],
     github: 'https://github.com/fahimistiaq456-netizen',
     live: 'https://travel-world-demo.vercel.app',
+    status: 'Live Deployed',
+    category: 'web',
+  },
+  {
+    id: 'noyamati',
+    title: 'Noyamati — B2B Wholesale Marketplace',
+    role: 'Full-Stack & E-Commerce Engineering',
+    categoryLabel: 'Commercial E-Commerce',
+    mockupType: 'laptop',
+    image: noyamatiPreview,
+    deviceUrl: 'noyamati.com',
+    description:
+      'Production-grade B2B wholesale marketplace connecting garment manufacturers with retail shop owners across Bangladesh, featuring catalog search, inventory management, and digital order tracking.',
+    highlights: [
+      'Commercial wholesale marketplace engineered at Softengine Lab with high-concurrency order processing',
+      'Dynamic product catalog with voice/SKU search, real-time cart state, and order tracking flows',
+      'Integrated payment gateways, courier logistics tracking, and analytics telemetry',
+    ],
+    tags: ['React', 'REST API', 'JavaScript', 'Node.js', 'Tailwind CSS', 'E-Commerce'],
+    github: 'https://github.com/fahimistiaq456-netizen',
+    live: 'https://noyamati.com',
     status: 'Live Deployed',
     category: 'web',
   },

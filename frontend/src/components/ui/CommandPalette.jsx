@@ -52,6 +52,7 @@ const ITEMS = [
   { id: 'trustrag', label: 'TrustRAG Local Lab (Live Demo)', type: 'link', path: 'https://trustrag-kappa.vercel.app/', shortcut: 'T', category: 'Live Projects' },
   { id: 'nexus-rag', label: 'Nexus Enterprise RAG Assistant (Live Demo)', type: 'link', path: 'https://enterprise-rag-assistant-liard.vercel.app/', shortcut: 'N', category: 'Live Projects' },
   { id: 'travel-world', label: 'Travel World Demo (Live Web App)', type: 'link', path: 'https://travel-world-demo.vercel.app', shortcut: 'W', category: 'Live Projects' },
+  { id: 'noyamati', label: 'Noyamati B2B Wholesale Marketplace (Live Platform)', type: 'link', path: 'https://noyamati.com', shortcut: 'O', category: 'Live Projects' },
   { id: 'mybusinessapp-git', label: 'MyBusinessApp Repo (Android & Spring Boot)', type: 'link', path: 'https://github.com/fahimistiaq456-netizen/MyBusinessApp', shortcut: 'M', category: 'Android' },
   { id: 'mybusinessapp-live', label: 'MyBusinessApp Web Showcase (Live Demo)', type: 'link', path: 'https://fahimistiaq456-netizen.github.io/MyBusinessApp/', shortcut: 'B', category: 'Live Projects' },
   { id: 'hero', label: 'Go to Overview / Introduction', type: 'nav', path: '#hero', shortcut: 'H', category: 'Navigation' },
