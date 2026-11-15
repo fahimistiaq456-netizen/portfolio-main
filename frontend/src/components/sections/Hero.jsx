@@ -118,11 +118,15 @@ export default function Hero() {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ x: 2 }}
-                className="px-3 py-2 text-xs font-mono text-slate-400 hover:text-white transition-colors duration-150 inline-flex items-center justify-center gap-1"
+                whileHover={{ y: -2, scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative group py-2.5 px-4 text-xs font-semibold rounded-[0.625rem] bg-gradient-to-r from-sky-500/15 via-teal-500/15 to-sky-500/15 hover:from-sky-500/25 hover:via-teal-500/25 hover:to-sky-500/25 border border-sky-400/40 hover:border-sky-300 text-sky-200 hover:text-white shadow-[0_0_15px_rgba(56,189,248,0.2)] hover:shadow-[0_0_25px_rgba(56,189,248,0.4)] backdrop-blur-md transition-all duration-200 inline-flex items-center justify-center gap-1.5 cursor-pointer"
               >
+                <svg className="w-3.5 h-3.5 text-sky-400 group-hover:scale-110 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
                 <span>Resume</span>
-                <span>↗</span>
+                <span className="text-sky-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150">↗</span>
               </motion.a>
             </motion.div>
           </div>
