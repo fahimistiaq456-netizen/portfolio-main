@@ -141,8 +141,8 @@ function BackgroundCanvas({ mouse, scrollY }) {
         position: 'fixed',
         top: 0,
         left: 0,
-        width: '100vw',
-        height: '100vh',
+        width: '100%',
+        height: '100%',
         zIndex: 0,
         pointerEvents: 'none',
       }}
@@ -232,10 +232,10 @@ export default function App() {
       <BackgroundCanvas mouse={mouse} scrollY={scrollY} />
 
       {/* Scrollable content overlay */}
-      <div className="relative z-10">
+      <div className="relative z-10 w-full max-w-full overflow-x-hidden">
         <CommandPalette />
         <Navbar />
-        <main>
+        <main className="w-full max-w-full overflow-x-hidden">
           <Hero />
           <Skills />
           <Projects projects={PROJECTS_DATA} />
