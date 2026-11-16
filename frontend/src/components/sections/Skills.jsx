@@ -75,6 +75,18 @@ const EDUCATION = [
     tag: 'Education',
   },
   {
+    title: 'SSC (Science) – GPA 5.00',
+    institution: 'Baunia Abdul Jalil High School, Dhaka',
+    note: 'Completed in 2018',
+    tag: 'Education',
+  },
+  {
+    title: 'HSC (Science) – GPA 4.83',
+    institution: 'Milestone College, Dhaka',
+    note: 'Completed in 2020',
+    tag: 'Education',
+  },
+  {
     title: 'Software Engineering Experience',
     institution: 'Softengine Lab',
     note: 'Hands-on product development applying modern toolchains and software engineering workflows.',
