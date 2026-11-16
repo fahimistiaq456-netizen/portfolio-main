@@ -102,7 +102,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.44 }}
-              className="flex flex-col sm:flex-row justify-center gap-2 w-full max-w-[340px] mt-2"
+              className="flex flex-col sm:flex-row justify-center gap-2 w-full max-w-[340px] mt-0"
             >
               {/* Button: Selected Work */}
               <a
