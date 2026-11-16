@@ -194,6 +194,9 @@ export default function App() {
       autoResize: true,
     })
 
+    // Ensure we start at the top of the page (hero section)
+    lenis.scrollTo(0, { immediate: true })
+
     window.lenis = lenis
 
     lenis.on('scroll', (e) => {

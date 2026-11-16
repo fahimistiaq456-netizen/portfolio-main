@@ -88,7 +88,7 @@ const EDUCATION = [
   },
   {
     title: 'Software Engineering Experience',
-    institution: 'Softengine Lab',
+    institution: 'softtrills.com',
     note: 'Hands-on product development applying modern toolchains and software engineering workflows.',
     tag: 'Experience',
   },
