@@ -168,7 +168,19 @@ export default function Skills() {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            {EDUCATION.map((edu) => (
+            {/* Education combined box */}
+            <div className="p-4 sm:p-5 rounded-md border border-white/20 bg-white/[0.04] backdrop-blur-lg hover:bg-white/[0.06] transition-colors duration-200">
+              <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-mono font-medium text-amber-400 bg-amber-500/10 border border-amber-500/20 mb-2">
+                Education
+              </span>
+              <ul className="list-disc list-inside text-xs text-slate-300 space-y-1">
+                <li><strong>B.Sc. Computer Science & Engineering</strong> – Mymensingh Engineering College (Affiliated with University of Dhaka)</li>
+                <li><strong>SSC (Science) – GPA 5.00</strong> – Baunia Abdul Jalil High School, Dhaka (2018)</li>
+                <li><strong>HSC (Science) – GPA 4.83</strong> – Milestone College, Dhaka (2020)</li>
+              </ul>
+            </div>
+            {/* Experience box (unchanged) */}
+            {EDUCATION.filter(e => e.tag === 'Experience').map((edu) => (
               <div
                 key={edu.title}
                 className="p-5 sm:p-6 rounded-2xl border border-white/[0.12] border-t-white/[0.22] bg-white/[0.03] backdrop-blur-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:border-white/25 hover:bg-white/[0.05] transition-all duration-200"
