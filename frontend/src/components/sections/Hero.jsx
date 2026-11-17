@@ -42,7 +42,7 @@ export default function Hero() {
                 className="mb-1"
               >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -65,7 +65,7 @@ export default function Hero() {
                   className="text-[1.65rem] xs:text-3xl font-extrabold tracking-tight text-white leading-[1.1]"
                 >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -81,7 +81,7 @@ export default function Hero() {
                   className="text-[1.65rem] xs:text-3xl font-extrabold tracking-tight leading-[1.1]"
                 >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -98,7 +98,7 @@ export default function Hero() {
                 className="mt-0.5"
               >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -118,7 +118,7 @@ export default function Hero() {
                 className="text-slate-400 text-[0.72rem] xs:text-xs leading-snug max-w-xs mt-1 px-1 line-clamp-3"
               >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -135,7 +135,7 @@ export default function Hero() {
               className="flex flex-col sm:flex-row justify-center gap-2 w-full max-w-[340px] mt-0"
             >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -147,7 +147,7 @@ export default function Hero() {
                 className="btn-primary flex-none min-w-[70px] !py-2 !px-2 text-xs inline-flex items-center justify-center gap-1 cursor-pointer whitespace-nowrap"
               >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -162,7 +162,7 @@ export default function Hero() {
                 className="btn-secondary flex-1 min-w-[100px] !py-2 !px-3 text-xs inline-flex items-center justify-center gap-1 cursor-pointer whitespace-nowrap"
               >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -178,7 +178,7 @@ export default function Hero() {
                 className="btn-primary flex-none min-w-[70px] !py-2 !px-2 text-xs inline-flex items-center justify-center gap-1 cursor-pointer whitespace-nowrap"
               >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -205,7 +205,7 @@ export default function Hero() {
               className="mb-3"
             >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -228,7 +228,7 @@ export default function Hero() {
                   className="text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08]"
                 >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -244,7 +244,7 @@ export default function Hero() {
                   className="text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08]"
                 >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -261,7 +261,7 @@ export default function Hero() {
               className="mb-3"
             >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -280,7 +280,7 @@ export default function Hero() {
               className="text-slate-400 text-sm md:text-base leading-relaxed max-w-lg mb-5"
             >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -295,7 +295,7 @@ export default function Hero() {
               className="flex flex-row items-center gap-3"
             >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -307,7 +307,7 @@ export default function Hero() {
                 className="btn-primary !py-2.5 !px-5 text-sm inline-flex items-center justify-center gap-1.5 cursor-pointer shadow-lg shadow-white/5 whitespace-nowrap"
               >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -323,7 +323,7 @@ export default function Hero() {
                 className="btn-secondary !py-2.5 !px-5 text-sm cursor-pointer inline-flex items-center justify-center whitespace-nowrap"
               >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -340,7 +340,7 @@ export default function Hero() {
                 className="relative group !py-2.5 !px-4 text-sm font-semibold rounded-[0.625rem] bg-gradient-to-r from-sky-500/15 via-teal-500/15 to-sky-500/15 hover:from-sky-500/25 hover:via-teal-500/25 hover:to-sky-500/25 border border-sky-400/40 hover:border-sky-300 text-sky-200 hover:text-white shadow-[0_0_15px_rgba(56,189,248,0.2)] backdrop-blur-md transition-all duration-200 inline-flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
               >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
@@ -373,7 +373,7 @@ export default function Hero() {
         aria-label="Scroll to projects"
       >
       {/* Layered glassmorphism graphic */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10 hidden md:block">
         <svg viewBox="0 0 200 200" className="w-80 h-80 text-white/15 fill-current">
           <rect x="30" y="30" width="140" height="140" rx="20" transform="rotate(15 100 100)" />
         </svg>
