@@ -1,4 +1,4 @@
-import { useRef, useEffect, Suspense } from 'react'
+import { useState, useRef, useEffect, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import Lenis from 'lenis'
@@ -135,8 +135,19 @@ const PROJECTS_DATA = [
 
 // ── 3D Background Canvas — fixed, GPU-optimised, pointer-events:none ─────────
 function BackgroundCanvas({ mouse, scrollY }) {
+  const [isTabVisible, setIsTabVisible] = useState(!document.hidden)
+
+  useEffect(() => {
+    const handleVisibility = () => {
+      setIsTabVisible(!document.hidden)
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
+    return () => document.removeEventListener('visibilitychange', handleVisibility)
+  }, [])
+
   return (
     <Canvas
+      frameloop={isTabVisible ? 'always' : 'never'}
       style={{
         position: 'fixed',
         top: 0,
@@ -145,12 +156,14 @@ function BackgroundCanvas({ mouse, scrollY }) {
         height: '100%',
         zIndex: 0,
         pointerEvents: 'none',
+        transform: 'translateZ(0)',
+        willChange: 'transform',
       }}
       camera={{ position: [0, 0, 6], fov: 70, near: 0.1, far: 1000 }}
       gl={{
         antialias: false,
         alpha: true,
-        powerPreference: 'default',
+        powerPreference: 'high-performance',
       }}
       dpr={1}
     >
@@ -186,10 +199,11 @@ export default function App() {
   // Lenis Smooth Scroll + mouse tracking for 3D
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.18,
+      lerp: 0.1,
       smoothWheel: true,
       wheelMultiplier: 1.0,
-      touchMultiplier: 1.2,
+      touchMultiplier: 1.0,
+      syncTouch: false,
       infinite: false,
       autoResize: true,
     })
@@ -210,6 +224,15 @@ export default function App() {
     }
     rafId = requestAnimationFrame(raf)
 
+    const handleVisibility = () => {
+      if (document.hidden) {
+        lenis.stop()
+      } else {
+        lenis.start()
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
+
     const onMouseMove = (e) => {
       mouse.current.x = (e.clientX / window.innerWidth - 0.5) * 2
       mouse.current.y = -(e.clientY / window.innerHeight - 0.5) * 2
@@ -218,6 +241,7 @@ export default function App() {
 
     return () => {
       cancelAnimationFrame(rafId)
+      document.removeEventListener('visibilitychange', handleVisibility)
       lenis.destroy()
       window.removeEventListener('mousemove', onMouseMove)
     }

@@ -31,7 +31,6 @@
 
 html {
   background-color: var(--bg-main);
-  scroll-behavior: smooth;
   color-scheme: dark;
   overflow-x: hidden;
   max-width: 100%;

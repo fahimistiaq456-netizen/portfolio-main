@@ -35,7 +35,8 @@ export default function Navbar() {
     const onScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 20)
+          const isScrolled = window.scrollY > 20
+          setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev))
           ticking = false
         })
         ticking = true
@@ -48,7 +49,7 @@ export default function Navbar() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActive(entry.target.id)
+            setActive((prev) => (prev !== entry.target.id ? entry.target.id : prev))
           }
         })
       },

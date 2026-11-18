@@ -136,11 +136,15 @@ export default function CommandPalette() {
     closePalette()
 
     if (item.type === 'nav') {
-      const el = document.querySelector(item.path)
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' })
-        window.history.pushState(null, '', item.path)
+      if (window.lenis) {
+        window.lenis.scrollTo(item.path, { offset: -20, duration: 1 })
+      } else {
+        const el = document.querySelector(item.path)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' })
+        }
       }
+      window.history.pushState(null, '', item.path)
     } else if (item.type === 'action') {
       item.action()
     } else if (item.type === 'link') {

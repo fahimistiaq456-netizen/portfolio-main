@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 
 function FloatingCore() {
@@ -100,8 +100,30 @@ function FloatingCore() {
 }
 
 export default function ContactScene({ className = '' }) {
+  const containerRef = useRef(null)
+  const [isInView, setIsInView] = useState(false)
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el || !('IntersectionObserver' in window)) {
+      setIsInView(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting)
+      },
+      { rootMargin: '300px 0px' } // Pre-render 300px before scrolling into view for instant smoothness
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div
+      ref={containerRef}
       aria-hidden="true"
       className={`absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden z-0 ${className}`}
     >
@@ -109,8 +131,9 @@ export default function ContactScene({ className = '' }) {
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[radial-gradient(circle,rgba(56,189,248,0.08)_0%,rgba(45,212,191,0.04)_50%,transparent_75%)] blur-3xl pointer-events-none" />
 
       <Canvas
+        frameloop={isInView ? 'always' : 'never'}
         camera={{ position: [0, 0, 4.5], fov: 45 }}
-        gl={{ antialias: true, alpha: true }}
+        gl={{ antialias: false, alpha: true, powerPreference: 'low-power' }}
         dpr={1}
         style={{ width: '100%', height: '100%', pointerEvents: 'none' }}
       >

@@ -12,10 +12,22 @@ export default function HeroGeometry({ mouse, scrollY }) {
   const targetRotY = useRef(0)
 
   useFrame(({ clock }) => {
-    const t = clock.elapsedTime
+    if (!groupRef.current) return
+
     const scroll = scrollY?.current || 0
 
-    if (!groupRef.current) return
+    // Off-screen culling: When scrolled past Hero, pause updates and hide group to skip draw calls
+    if (scroll > 1400) {
+      if (groupRef.current.visible) {
+        groupRef.current.visible = false
+      }
+      return
+    }
+    if (!groupRef.current.visible) {
+      groupRef.current.visible = true
+    }
+
+    const t = clock.elapsedTime
 
     targetRotX.current += 0.001
     targetRotY.current += 0.0015
