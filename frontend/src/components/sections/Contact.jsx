@@ -72,7 +72,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-[100dvh] lg:h-[100dvh] relative bg-transparent flex flex-col justify-between pt-16 sm:pt-20 pb-5 px-4 sm:px-8 overflow-hidden z-10"
+      className="min-h-[100dvh] lg:h-[100dvh] relative bg-transparent flex flex-col justify-between pt-12 sm:pt-14 pb-4 sm:pb-5 px-4 sm:px-6 lg:px-8 overflow-hidden z-10"
     >
       {/* ── Subtle 3D Ambient Element in the Background ── */}
       <ContactScene />
@@ -81,7 +81,7 @@ export default function Contact() {
       <div className="max-w-5xl mx-auto w-full relative z-10 my-auto">
 
         {/* Section Header */}
-        <ScrollReveal yOffset={15} className="mb-6 sm:mb-8">
+        <ScrollReveal yOffset={15} className="mb-4 sm:mb-6">
           <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full border border-white/10 bg-white/[0.03] text-[10px] font-mono text-slate-300 uppercase tracking-wider mb-2">
             Get In Touch
           </div>
@@ -94,10 +94,10 @@ export default function Contact() {
         </ScrollReveal>
 
         {/* 2-Column Minimalist Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-start">
 
           {/* Left Column: Direct Reach & Quick Channels */}
-          <div className="lg:col-span-5 space-y-3.5">
+          <div className="lg:col-span-5 space-y-2.5 sm:space-y-3">
             {/* Availability Pill */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 backdrop-blur-md text-emerald-300 text-xs font-mono shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -105,7 +105,7 @@ export default function Contact() {
             </div>
 
             {/* Email Contact Line */}
-            <div className="p-3.5 rounded-xl border border-white/[0.12] border-t-white/[0.2] bg-white/[0.03] backdrop-blur-xl shadow-lg shadow-black/40 hover:border-white/25 transition-all">
+            <div className="p-3 rounded-xl border border-white/[0.12] border-t-white/[0.2] bg-white/[0.03] backdrop-blur-xl shadow-lg shadow-black/40 hover:border-white/25 transition-all">
               <p className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1">
                 Direct Email
               </p>
@@ -128,7 +128,7 @@ export default function Contact() {
 
             {/* Phone & Location Line */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5">
-              <div className="p-3 rounded-xl border border-white/[0.12] border-t-white/[0.2] bg-white/[0.03] backdrop-blur-xl shadow-lg shadow-black/40 hover:border-white/25 transition-all">
+              <div className="p-2.5 sm:p-3 rounded-xl border border-white/[0.12] border-t-white/[0.2] bg-white/[0.03] backdrop-blur-xl shadow-lg shadow-black/40 hover:border-white/25 transition-all">
                 <p className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-0.5">
                   Phone &amp; WhatsApp
                 </p>
@@ -140,7 +140,7 @@ export default function Contact() {
                 </a>
               </div>
 
-              <div className="p-3 rounded-xl border border-white/[0.12] border-t-white/[0.2] bg-white/[0.03] backdrop-blur-xl shadow-lg shadow-black/40 hover:border-white/25 transition-all flex items-center justify-between">
+              <div className="p-2.5 sm:p-3 rounded-xl border border-white/[0.12] border-t-white/[0.2] bg-white/[0.03] backdrop-blur-xl shadow-lg shadow-black/40 hover:border-white/25 transition-all flex items-center justify-between">
                 <div>
                   <p className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-0.5">
                     Location
@@ -154,7 +154,7 @@ export default function Contact() {
             </div>
 
             {/* Quick Resume Link */}
-            <div className="pt-1">
+            <div className="pt-0.5">
               <a
                 href="/resume.pdf"
                 target="_blank"
@@ -169,7 +169,7 @@ export default function Contact() {
 
           {/* Right Column: Clean Minimalist Form */}
           <div className="lg:col-span-7">
-            <div className="p-5 sm:p-6 rounded-2xl border border-white/[0.12] border-t-white/[0.25] bg-white/[0.03] backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.45)] relative">
+            <div className="p-4 sm:p-5 lg:p-6 rounded-2xl border border-white/[0.12] border-t-white/[0.25] bg-white/[0.03] backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.45)] relative">
 
               <AnimatePresence mode="wait">
                 {status === 'success' ? (
@@ -197,7 +197,7 @@ export default function Contact() {
                     </button>
                   </motion.div>
                 ) : (
-                  <form key="form" onSubmit={handleSubmit} className="space-y-3.5">
+                  <form key="form" onSubmit={handleSubmit} className="space-y-3 sm:space-y-3.5">
                     {/* Inquiry Type Pills */}
                     <div>
                       <div className="flex flex-wrap gap-1.5">
@@ -310,7 +310,7 @@ export default function Contact() {
       </div>
 
       {/* ── Seamless Integrated Footer (Inside Contact) ── */}
-      <div className="max-w-5xl mx-auto w-full pt-4 border-t border-white/[0.08] relative z-10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+      <div className="max-w-5xl mx-auto w-full pt-3 sm:pt-3.5 border-t border-white/[0.08] relative z-10 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 text-xs text-slate-400">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-1.5 sm:gap-3 text-center sm:text-left">
           <span className="font-bold text-white tracking-tight">
             Md. Fahim Istiaq Siam

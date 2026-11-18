@@ -87,7 +87,7 @@ export default function ProjectCard({ project, index }) {
     <article className="rounded-2xl border border-white/[0.12] border-t-white/[0.25] bg-white/[0.03] backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.45)] hover:border-white/25 hover:bg-white/[0.05] flex flex-col justify-between h-full transition-all duration-300 overflow-hidden group">
       <div>
         {/* ── Smart Mockup Stage ── */}
-        <div className="relative w-full aspect-[16/10] overflow-hidden border-b border-white/[0.08]">
+        <div className="relative w-full aspect-[16/9.5] overflow-hidden border-b border-white/[0.08]">
           <DeviceMockup project={project} />
 
           {/* Hover Explore Action Pill */}
@@ -105,9 +105,9 @@ export default function ProjectCard({ project, index }) {
         </div>
 
         {/* ── Content Body ── */}
-        <div className="p-4 sm:p-6 lg:p-7">
+        <div className="p-4 sm:p-5 lg:p-6">
           {/* Status & Category Bar (Clean & Unobstructed) */}
-          <div className="flex items-center justify-between gap-2 mb-2.5 sm:mb-3">
+          <div className="flex items-center justify-between gap-2 mb-2 sm:mb-2.5">
             <div className="flex items-center gap-2">
               {num && (
                 <span className="text-sky-400 font-mono font-bold text-xs select-none">
@@ -134,7 +134,7 @@ export default function ProjectCard({ project, index }) {
           </div>
 
           {/* Project Title with External Arrow */}
-          <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-tight mb-2 sm:mb-2.5">
+          <h3 className="text-lg sm:text-xl lg:text-xl font-bold text-white tracking-tight mb-1.5 sm:mb-2">
             <a
               href={primaryHref}
               target="_blank"
@@ -149,14 +149,14 @@ export default function ProjectCard({ project, index }) {
           </h3>
 
           {/* Description */}
-          <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5">
+          <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
             {project.description}
           </p>
 
           {/* Key Architecture Highlights */}
           {project.highlights && project.highlights.length > 0 && (
-            <div className="mb-4 sm:mb-5 pt-3 sm:pt-3.5 border-t border-white/[0.08]">
-              <p className="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1.5 sm:mb-2">
+            <div className="mb-3 sm:mb-4 pt-2.5 sm:pt-3 border-t border-white/[0.08]">
+              <p className="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1.5">
                 Engineering Highlights
               </p>
               <ul className="space-y-1 sm:space-y-1.5">
@@ -171,7 +171,7 @@ export default function ProjectCard({ project, index }) {
           )}
 
           {/* Tech Stack Monospace Pills */}
-          <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-4 sm:mb-6">
+          <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-3 sm:mb-4">
             {project.tags.map((tag) => (
               <span
                 key={tag}
@@ -185,7 +185,7 @@ export default function ProjectCard({ project, index }) {
       </div>
 
       {/* ── Bottom Action Bar ── */}
-      <div className="px-4 sm:px-6 lg:px-7 pb-4 sm:pb-6 pt-3 sm:pt-3.5 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 text-xs">
+      <div className="px-4 sm:px-5 lg:px-6 pb-3.5 sm:pb-4 pt-2.5 sm:pt-3 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 text-xs">
         <div className="flex items-center gap-2.5">
           {project.live ? (
             <a

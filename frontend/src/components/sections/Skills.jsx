@@ -96,16 +96,16 @@ const EDUCATION = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-16 sm:py-24 lg:py-32 relative bg-transparent">
+    <section id="skills" className="py-12 sm:py-16 lg:py-20 relative bg-transparent">
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <ScrollReveal yOffset={20} className="mb-10 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-[10px] sm:text-[11px] font-mono text-slate-300 uppercase tracking-wider mb-3 sm:mb-4">
+        <ScrollReveal yOffset={20} className="mb-6 sm:mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-[10px] sm:text-[11px] font-mono text-slate-300 uppercase tracking-wider mb-2.5 sm:mb-3">
             Capabilities &amp; Stack
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3 sm:mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-2.5 sm:mb-3">
             Engineering capabilities.
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm md:text-base max-w-xl leading-relaxed">
@@ -114,13 +114,13 @@ export default function Skills() {
         </ScrollReveal>
 
         {/* Minimalist Editorial Rows — No Heavy Card Boxes */}
-        <div className="divide-y divide-white/[0.08] border-y border-white/[0.08] mb-12 sm:mb-16">
+        <div className="divide-y divide-white/[0.08] border-y border-white/[0.08] mb-8 sm:mb-12">
           {CAPABILITIES.map((item, idx) => (
             <ScrollReveal
               key={item.category}
               yOffset={16}
               delay={idx * 0.06}
-              className="py-6 sm:py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 md:gap-8 items-start group hover:bg-white/[0.015] transition-colors duration-200 px-3 sm:px-4 rounded-xl"
+              className="py-4 sm:py-5 md:py-6 grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-5 md:gap-6 items-start group hover:bg-white/[0.015] transition-colors duration-200 px-3 sm:px-4 rounded-xl"
             >
               {/* Left Column: Number & Category Title */}
               <div className="md:col-span-4 flex items-start gap-3 sm:gap-4">
@@ -139,7 +139,7 @@ export default function Skills() {
 
               {/* Right Column: Narrative Description & Clean Tech Tags */}
               <div className="md:col-span-8 flex flex-col justify-between">
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3 sm:mb-4">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-2.5 sm:mb-3">
                   {item.description}
                 </p>
 
@@ -159,26 +159,26 @@ export default function Skills() {
         </div>
 
         {/* Credentials / Education & Experience Bar */}
-        <ScrollReveal yOffset={20} delay={0.1} className="pt-4 sm:pt-6">
-          <div className="mb-6 sm:mb-8">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.04] text-xs sm:text-sm font-mono text-slate-300 uppercase tracking-wider">
+        <ScrollReveal yOffset={20} delay={0.1} className="pt-2 sm:pt-4">
+          <div className="mb-4 sm:mb-6">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.04] text-xs sm:text-sm font-mono text-slate-300 uppercase tracking-wider">
               Background &amp; Credentials
             </span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
             {/* Education feature card */}
-            <div className="p-7 sm:p-9 lg:p-10 rounded-2xl border border-white/[0.14] border-t-white/[0.25] bg-white/[0.04] backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.45)] hover:border-white/30 hover:bg-white/[0.06] transition-all duration-300 flex flex-col justify-between min-h-[300px] sm:min-h-[340px]">
+            <div className="p-6 sm:p-7 lg:p-8 rounded-2xl border border-white/[0.14] border-t-white/[0.25] bg-white/[0.04] backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.45)] hover:border-white/30 hover:bg-white/[0.06] transition-all duration-300 flex flex-col justify-between min-h-[260px] sm:min-h-[290px]">
               <div>
-                <div className="flex items-center justify-between mb-4 sm:mb-5">
+                <div className="flex items-center justify-between mb-3.5 sm:mb-4">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/25">
                     Education
                   </span>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-4 sm:mb-5">
+                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-3.5 sm:mb-4">
                   Academic Qualifications
                 </h3>
-                <ul className="space-y-3.5 sm:space-y-4">
+                <ul className="space-y-3 sm:space-y-3.5">
                   <li className="flex items-start gap-3">
                     <span className="text-amber-400 mt-1 select-none text-sm">✦</span>
                     <div>
@@ -218,24 +218,24 @@ export default function Skills() {
             </div>
 
             {/* Experience feature card */}
-            <div className="p-7 sm:p-9 lg:p-10 rounded-2xl border border-white/[0.14] border-t-white/[0.25] bg-white/[0.04] backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.45)] hover:border-white/30 hover:bg-white/[0.06] transition-all duration-300 flex flex-col justify-between min-h-[300px] sm:min-h-[340px]">
+            <div className="p-6 sm:p-7 lg:p-8 rounded-2xl border border-white/[0.14] border-t-white/[0.25] bg-white/[0.04] backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.45)] hover:border-white/30 hover:bg-white/[0.06] transition-all duration-300 flex flex-col justify-between min-h-[260px] sm:min-h-[290px]">
               <div>
-                <div className="flex items-center justify-between mb-4 sm:mb-5">
+                <div className="flex items-center justify-between mb-3.5 sm:mb-4">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/25">
                     Experience
                   </span>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-1.5 sm:mb-2">
+                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-1 sm:mb-1.5">
                   Software Engineering Experience
                 </h3>
-                <p className="text-sm sm:text-base font-semibold text-sky-400 mb-4 sm:mb-5 flex items-center gap-2 font-mono">
+                <p className="text-sm sm:text-base font-semibold text-sky-400 mb-3.5 sm:mb-4 flex items-center gap-2 font-mono">
                   softtrills.com
                 </p>
-                <div className="space-y-3.5 sm:space-y-4">
+                <div className="space-y-3 sm:space-y-3.5">
                   <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                     Hands-on product development applying modern toolchains, native Android architecture, and disciplined software engineering workflows.
                   </p>
-                  <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300 pt-1">
+                  <ul className="space-y-2 text-xs sm:text-sm text-slate-300 pt-1">
                     <li className="flex items-start gap-2.5">
                       <span className="text-emerald-400 mt-0.5 select-none">✦</span>
                       <span>Production Android engineering with Kotlin, Jetpack Compose, Coroutines, and clean MVVM.</span>

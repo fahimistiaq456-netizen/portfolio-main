@@ -19,7 +19,7 @@ export default function Hero() {
       {/* ── DESKTOP layout: side-by-side grid centered ── */}
 
       {/* Content wrapper — fills full viewport height */}
-      <div className="relative flex-1 flex flex-col max-w-6xl mx-auto px-4 sm:px-6 w-full z-10 pt-16 sm:pt-20 pb-4 sm:pb-6">
+      <div className="relative flex-1 flex flex-col max-w-6xl mx-auto px-4 sm:px-6 w-full z-10 pt-14 sm:pt-16 pb-3 sm:pb-5">
 
         {/* ══ MOBILE: stacked portrait + text that fits in one screen ══ */}
         <div className="flex flex-col h-full md:hidden">
@@ -148,7 +148,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="mb-3"
+              className="mb-2 sm:mb-2.5"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.04] text-xs font-medium text-slate-300 backdrop-blur-md">
                 <span className="relative flex h-2 w-2">
@@ -159,7 +159,7 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            <div className="mb-2">
+            <div className="mb-1.5 sm:mb-2">
               <div className="overflow-hidden">
                 <motion.h1
                   initial={{ y: '115%', opacity: 0 }}
@@ -186,7 +186,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.34 }}
-              className="mb-3"
+              className="mb-2 sm:mb-2.5"
             >
               <h2 className="text-lg lg:text-xl font-semibold text-slate-200 tracking-tight">
                 <span>Android & Software Engineer</span>
@@ -199,7 +199,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.42 }}
-              className="text-slate-400 text-sm md:text-base leading-relaxed max-w-lg mb-5"
+              className="text-slate-400 text-sm md:text-base leading-relaxed max-w-lg mb-4 sm:mb-5"
             >
               Architecting production-grade native Android applications with Kotlin, Compose, and clean MVVM architecture, backed by modern REST APIs and intelligent retrieval systems.
             </motion.p>
@@ -261,7 +261,7 @@ export default function Hero() {
           opacity: { delay: 0.8, duration: 0.5 },
           y: { repeat: Infinity, duration: 2.2, ease: 'easeInOut' },
         }}
-        className="hidden md:flex flex-col items-center gap-1.5 text-[11px] font-mono text-slate-400 hover:text-slate-200 transition-colors duration-150 cursor-pointer pb-4 mx-auto"
+        className="hidden md:flex flex-col items-center gap-1.5 text-[11px] font-mono text-slate-400 hover:text-slate-200 transition-colors duration-150 cursor-pointer pb-2.5 sm:pb-3.5 mx-auto"
         aria-label="Scroll to projects"
       >
         <span>Explore Work</span>

@@ -28,17 +28,17 @@ export default function Projects({ projects = [] }) {
   })
 
   return (
-    <section id="projects" className="py-16 sm:py-24 lg:py-32 relative bg-transparent">
+    <section id="projects" className="py-12 sm:py-16 lg:py-20 relative bg-transparent">
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <ScrollReveal yOffset={20} className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-10 sm:mb-14">
+        <ScrollReveal yOffset={20} className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-6 sm:mb-8">
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-[10px] sm:text-[11px] font-mono text-slate-300 uppercase tracking-wider mb-3 sm:mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-[10px] sm:text-[11px] font-mono text-slate-300 uppercase tracking-wider mb-2.5 sm:mb-3">
               Selected Work
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3 sm:mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-2.5 sm:mb-3">
               Featured work.
             </h2>
             <p className="text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed">

@@ -4,7 +4,7 @@ export default function About() {
   const sectionRef = useScrollReveal()
 
   return (
-    <section id="about" className="py-24 sm:py-32 relative">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 relative">
       {/* Background ambient glow spots */}
       
       
@@ -12,7 +12,7 @@ export default function About() {
       <div ref={sectionRef} className="section-fade relative max-w-7xl mx-auto px-5 sm:px-6 w-full z-10">
         
         {/* Section Header */}
-        <div className="mb-12 sm:mb-16">
+        <div className="mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#13e6c4]/20 bg-[#13e6c4]/5 text-[10px] sm:text-xs font-bold tracking-widest text-[#13e6c4] uppercase mb-4">
             ABOUT
           </div>
