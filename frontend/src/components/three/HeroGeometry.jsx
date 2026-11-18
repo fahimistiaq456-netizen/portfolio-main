@@ -2,6 +2,8 @@ import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
+const RING_OPACITY = [0.35, 0.25, 0.14]
+
 export default function HeroGeometry({ mouse, scrollY }) {
   const groupRef = useRef()
   const ring1Ref = useRef()
@@ -11,13 +13,15 @@ export default function HeroGeometry({ mouse, scrollY }) {
   const targetRotX = useRef(0)
   const targetRotY = useRef(0)
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock, size, viewport }) => {
     if (!groupRef.current) return
 
     const scroll = scrollY?.current || 0
 
-    // Off-screen culling: When scrolled past Hero, pause updates and hide group to skip draw calls
-    if (scroll > 1400) {
+    // Fade the rings out together with the hero so they never drift across the text of the
+    // sections below. Once invisible, hide the group to skip its draw calls.
+    const fade = 1 - THREE.MathUtils.smoothstep(scroll, size.height * 0.15, size.height * 0.8)
+    if (fade <= 0) {
       if (groupRef.current.visible) {
         groupRef.current.visible = false
       }
@@ -26,6 +30,10 @@ export default function HeroGeometry({ mouse, scrollY }) {
     if (!groupRef.current.visible) {
       groupRef.current.visible = true
     }
+
+    ;[ring1Ref, ring2Ref, ring3Ref].forEach((ring, i) => {
+      if (ring.current) ring.current.material.opacity = RING_OPACITY[i] * fade
+    })
 
     const t = clock.elapsedTime
 
@@ -46,11 +54,16 @@ export default function HeroGeometry({ mouse, scrollY }) {
       0.03
     )
 
-    // Subtle scroll-linked vertical parallax and gentle scale
-    groupRef.current.position.y = Math.sin(t * 0.5) * 0.06 - Math.min(scroll * 0.0015, 6)
+    // Orbit the portrait: right-hand side on desktop, top-centre on the stacked mobile layout
+    const isStacked = size.width < 768
+    const baseY = isStacked ? viewport.height * 0.27 : 0
 
-    const scrollFactor = Math.max(0.45, 1 - scroll / 2500) * 0.85
-    groupRef.current.scale.setScalar(scrollFactor)
+    // Drift upwards with the page (slower than the content) while scrolling away
+    groupRef.current.position.x = isStacked ? 0 : 2.35
+    groupRef.current.position.y =
+      baseY + Math.sin(t * 0.5) * 0.06 + (scroll / size.height) * viewport.height * 0.4
+
+    groupRef.current.scale.setScalar((isStacked ? 0.5 : 0.85) * (0.8 + 0.2 * fade))
 
     if (ring1Ref.current) {
       ring1Ref.current.rotation.z += 0.004

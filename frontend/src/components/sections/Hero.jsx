@@ -1,36 +1,53 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useTransform } from 'framer-motion'
 import HeroPortrait from '../ui/HeroPortrait'
+import RevealText from '../ui/RevealText'
+import { handleAnchorClick, pageScrollY, scrollToSection } from '../../lib/scroll'
 
 export default function Hero() {
-  const scrollToProjects = () => {
-    if (window.lenis) {
-      window.lenis.scrollTo('#projects', { offset: -20, duration: 1 })
-    } else {
-      document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+  const sectionRef = useRef(null)
+
+  // 0 → 1 as the hero scrolls away. On screens shorter than the hero it only starts
+  // once the bottom of the hero is reached, so the buttons never fade while in use.
+  const exitProgress = useTransform(pageScrollY, (y) => {
+    const el = sectionRef.current
+    if (!el) return 0
+    const viewport = window.innerHeight
+    const start = Math.max(0, el.offsetHeight - viewport)
+    return Math.min(1, Math.max(0, (y - start) / (viewport * 0.85)))
+  })
+  // The content only ever gets a transform (on its own compositor layer) and the fade is a
+  // plain overlay. Changing opacity/scale on the content itself would repaint the portrait
+  // shadow and the blurred badges on every scroll frame, which is far too expensive.
+  const contentScale = useTransform(exitProgress, [0, 1], [1, 0.94])
+  const contentY = useTransform(exitProgress, [0, 1], [0, 60])
+  const scrimOpacity = useTransform(exitProgress, [0, 1], [0, 0.92])
 
   return (
     <section
+      ref={sectionRef}
       id="hero"
-      className="relative h-[100dvh] flex flex-col overflow-hidden bg-minimal-dots"
+      className="relative min-h-[100dvh] flex flex-col overflow-hidden bg-minimal-dots"
     >
-      {/* ── MOBILE layout: portrait top-right, text below, all in 100dvh ── */}
+      {/* ── MOBILE layout: portrait on top, text and CTAs below, centered as one group ── */}
       {/* ── DESKTOP layout: side-by-side grid centered ── */}
 
-      {/* Content wrapper — fills full viewport height */}
-      <div className="relative flex-1 flex flex-col max-w-6xl mx-auto px-4 sm:px-6 w-full z-10 pt-14 sm:pt-16 pb-3 sm:pb-5">
+      {/* Content wrapper — fills at least the viewport height, grows on short screens */}
+      <motion.div
+        style={{ scale: contentScale, y: contentY }}
+        className="relative flex-1 flex flex-col max-w-6xl mx-auto px-4 sm:px-6 w-full z-10 pt-14 sm:pt-16 pb-3 sm:pb-5 will-change-transform"
+      >
 
-        {/* ══ MOBILE: stacked portrait + text that fits in one screen ══ */}
-        <div className="flex flex-col h-full md:hidden">
+        {/* ══ MOBILE: stacked portrait + text, vertically centered ══ */}
+        <div className="flex flex-col flex-1 justify-center md:hidden">
 
-          {/* Portrait — compact on mobile, centered */}
+          {/* Portrait — scales with screen height, centered */}
           <div className="flex justify-center shrink-0">
             <HeroPortrait />
           </div>
 
-          {/* Text + CTAs block — takes remaining space */}
-          <div className="flex flex-col items-center text-center flex-1 justify-between pb-1 min-h-0">
+          {/* Text + CTAs block */}
+          <div className="flex flex-col items-center text-center gap-5 pt-2 pb-1">
 
             {/* Text content */}
             <div className="flex flex-col items-center gap-0.5">
@@ -50,27 +67,19 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Name */}
-              <div className="overflow-hidden">
-                <motion.h1
-                  initial={{ y: '110%', opacity: 0 }}
-                  animate={{ y: '0%', opacity: 1 }}
-                  transition={{ duration: 0.7, delay: 0.1 }}
-                  className="text-[1.65rem] xs:text-3xl font-extrabold tracking-tight text-white leading-[1.1]"
-                >
-                  Md. Fahim Istiaq
-                </motion.h1>
-              </div>
-              <div className="overflow-hidden">
-                <motion.div
-                  initial={{ y: '110%', opacity: 0 }}
-                  animate={{ y: '0%', opacity: 1 }}
-                  transition={{ duration: 0.7, delay: 0.18 }}
-                  className="text-[1.65rem] xs:text-3xl font-extrabold tracking-tight leading-[1.1]"
-                >
-                  <span className="minimal-accent-text">Siam</span>
-                </motion.div>
-              </div>
+              {/* Name — revealed word by word */}
+              <RevealText
+                as="h1"
+                text="Md. Fahim Istiaq"
+                delay={0.1}
+                className="text-[1.65rem] xs:text-3xl font-extrabold tracking-tight text-white leading-[1.1]"
+              />
+              <RevealText
+                text="Siam"
+                delay={0.34}
+                wordClassName="minimal-accent-text"
+                className="text-[1.65rem] xs:text-3xl font-extrabold tracking-tight leading-[1.1]"
+              />
 
               {/* Subtitle */}
               <motion.div
@@ -86,12 +95,12 @@ export default function Hero() {
                 </h2>
               </motion.div>
 
-              {/* Description — 2 lines max on mobile */}
+              {/* Description */}
               <motion.p
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.36 }}
-                className="text-slate-400 text-[0.72rem] xs:text-xs leading-snug max-w-xs mt-1 px-1 line-clamp-3"
+                className="text-slate-400 text-[0.72rem] xs:text-xs leading-snug max-w-xs mt-1 px-1"
               >
                 Architecting production-grade native Android applications with Kotlin, Compose, and clean MVVM architecture, backed by modern REST APIs and intelligent retrieval systems.
               </motion.p>
@@ -107,7 +116,7 @@ export default function Hero() {
               {/* Button: Selected Work */}
               <a
                 href="#projects"
-                onClick={scrollToProjects}
+                onClick={(e) => handleAnchorClick(e, '#projects')}
                 className="btn-primary flex-none min-w-[70px] !py-2 !px-2 text-xs inline-flex items-center justify-center gap-1 cursor-pointer whitespace-nowrap"
               >
                 <span>Selected Work</span>
@@ -117,6 +126,7 @@ export default function Hero() {
               {/* Button: Get In Touch */}
               <a
                 href="#contact"
+                onClick={(e) => handleAnchorClick(e, '#contact')}
                 className="btn-secondary flex-1 min-w-[100px] !py-2 !px-3 text-xs inline-flex items-center justify-center gap-1 cursor-pointer whitespace-nowrap"
               >
                 <span>Get In Touch</span>
@@ -140,7 +150,7 @@ export default function Hero() {
         </div>
 
         {/* ══ DESKTOP (md+): side-by-side grid ══ */}
-        <div className="hidden md:grid md:grid-cols-12 gap-8 lg:gap-12 items-center h-full">
+        <div className="hidden md:grid md:grid-cols-12 gap-8 lg:gap-12 items-center flex-1">
 
           {/* Left: Text */}
           <div className="md:col-span-7 flex flex-col items-start text-left">
@@ -160,26 +170,18 @@ export default function Hero() {
             </motion.div>
 
             <div className="mb-1.5 sm:mb-2">
-              <div className="overflow-hidden">
-                <motion.h1
-                  initial={{ y: '115%', opacity: 0 }}
-                  animate={{ y: '0%', opacity: 1 }}
-                  transition={{ duration: 0.75, delay: 0.12 }}
-                  className="text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08]"
-                >
-                  Md. Fahim Istiaq
-                </motion.h1>
-              </div>
-              <div className="overflow-hidden">
-                <motion.div
-                  initial={{ y: '115%', opacity: 0 }}
-                  animate={{ y: '0%', opacity: 1 }}
-                  transition={{ duration: 0.75, delay: 0.22 }}
-                  className="text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08]"
-                >
-                  <span className="minimal-accent-text">Siam</span>
-                </motion.div>
-              </div>
+              <RevealText
+                as="h1"
+                text="Md. Fahim Istiaq"
+                delay={0.12}
+                className="text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08]"
+              />
+              <RevealText
+                text="Siam"
+                delay={0.38}
+                wordClassName="minimal-accent-text"
+                className="text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08]"
+              />
             </div>
 
             <motion.div
@@ -212,6 +214,7 @@ export default function Hero() {
             >
               <motion.a
                 href="#projects"
+                onClick={(e) => handleAnchorClick(e, '#projects')}
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="btn-primary !py-2.5 !px-5 text-sm inline-flex items-center justify-center gap-1.5 cursor-pointer shadow-lg shadow-white/5 whitespace-nowrap"
@@ -222,6 +225,7 @@ export default function Hero() {
 
               <motion.a
                 href="#contact"
+                onClick={(e) => handleAnchorClick(e, '#contact')}
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="btn-secondary !py-2.5 !px-5 text-sm cursor-pointer inline-flex items-center justify-center whitespace-nowrap"
@@ -250,11 +254,11 @@ export default function Hero() {
             <HeroPortrait />
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll indicator — desktop only */}
       <motion.button
-        onClick={scrollToProjects}
+        onClick={() => scrollToSection('#projects')}
         initial={{ opacity: 0, y: -6 }}
         animate={{ opacity: 1, y: [0, 5, 0] }}
         transition={{
@@ -269,6 +273,13 @@ export default function Hero() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </motion.button>
+
+      {/* Fade-out overlay: dims the hero into the page background as it scrolls away */}
+      <motion.div
+        aria-hidden="true"
+        style={{ opacity: scrimOpacity }}
+        className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-b from-[#090a0f] from-80% to-transparent will-change-[opacity]"
+      />
     </section>
   )
 }

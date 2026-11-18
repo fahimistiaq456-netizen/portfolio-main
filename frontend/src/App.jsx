@@ -10,6 +10,7 @@ import Projects from './components/sections/Projects'
 import Contact from './components/sections/Contact'
 import ParticleField from './components/three/ParticleField'
 import HeroGeometry from './components/three/HeroGeometry'
+import { pageScrollY } from './lib/scroll'
 
 // Project screenshot assets
 import mybusinessDashboard from './assets/projects/mybusiness_dashboard.jpg'
@@ -215,6 +216,7 @@ export default function App() {
 
     lenis.on('scroll', (e) => {
       scrollY.current = e.scroll
+      pageScrollY.set(e.scroll)
     })
 
     let rafId

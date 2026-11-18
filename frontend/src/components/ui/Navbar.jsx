@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import portraitImg from '../../assets/siam_portrait.png'
+import { handleAnchorClick } from '../../lib/scroll'
 
 const NAV_LINKS = [
   { href: '#hero', label: 'Overview' },
@@ -15,15 +16,8 @@ export default function Navbar() {
   const [active, setActive] = useState('hero')
 
   const handleNavClick = (e, href) => {
-    e.preventDefault()
     setMenuOpen(false)
-    if (window.lenis) {
-      window.lenis.scrollTo(href, { offset: -20, duration: 1.0 })
-    } else {
-      const el = document.querySelector(href)
-      el?.scrollIntoView({ behavior: 'smooth' })
-    }
-    window.history.pushState(null, '', href)
+    handleAnchorClick(e, href)
   }
 
   const openCommandPalette = () => {
@@ -103,8 +97,12 @@ export default function Navbar() {
           </div>
         </a>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-[#10121b]/80 border border-white/[0.08] rounded-full p-1 backdrop-blur-md">
+        {/* Desktop Navigation Links — the active pill slides between links.
+            layoutRoot keeps the slide correct inside the fixed header while the page scrolls. */}
+        <motion.nav
+          layoutRoot
+          className="hidden md:flex items-center gap-1 bg-[#10121b]/80 border border-white/[0.08] rounded-full p-1 backdrop-blur-md"
+        >
           {NAV_LINKS.map(({ href, label }) => {
             const id = href.replace('#', '')
             const isActive = active === id
@@ -113,17 +111,22 @@ export default function Navbar() {
                 key={href}
                 href={href}
                 onClick={(e) => handleNavClick(e, href)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-150 ${
-                  isActive
-                    ? 'bg-white text-[#090a0f] font-semibold'
-                    : 'text-slate-400 hover:text-white'
+                className={`relative px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors duration-200 ${
+                  isActive ? 'text-[#090a0f]' : 'text-slate-400 hover:text-white'
                 }`}
               >
-                {label}
+                {isActive && (
+                  <motion.span
+                    layoutId="nav-active-pill"
+                    transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                    className="absolute inset-0 rounded-full bg-white"
+                  />
+                )}
+                <span className="relative">{label}</span>
               </a>
             )
           })}
-        </nav>
+        </motion.nav>
 
         {/* Right Actions: Command Palette trigger & Resume */}
         <div className="hidden sm:flex items-center gap-2.5">

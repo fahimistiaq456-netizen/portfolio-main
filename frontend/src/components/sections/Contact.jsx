@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useAnimationControls } from 'framer-motion'
 import ScrollReveal from '../ui/ScrollReveal'
+import RevealText from '../ui/RevealText'
+import SectionEyebrow from '../ui/SectionEyebrow'
 import ContactScene from '../three/ContactScene'
 import { apiUrl } from '../../lib/api'
 
@@ -11,8 +13,29 @@ const INQUIRY_TYPES = [
   'General Inquiry',
 ]
 
+const FIELD_CLASS =
+  'peer w-full px-3 pt-5 pb-1.5 rounded-xl border border-white/10 border-t-white/[0.18] bg-white/[0.03] backdrop-blur-md text-xs sm:text-sm text-white focus:outline-none focus:border-sky-400 focus:bg-white/[0.07] focus:ring-1 focus:ring-sky-400/30 transition-all shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]'
+
+// The label rests inside the field like a placeholder (while the field is empty and unfocused)
+// and floats up into a small caption once the field is focused or filled.
+const LABEL_CLASS =
+  'pointer-events-none absolute left-3 top-[13px] origin-left text-xs sm:text-sm text-slate-400 transition-all duration-200 ease-out -translate-y-2.5 scale-[0.78] peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-slate-500 peer-focus:-translate-y-2.5 peer-focus:scale-[0.78] peer-focus:text-sky-300'
+
+function FloatingField({ as: Tag = 'input', id, label, className = '', ...props }) {
+  return (
+    <div className="relative">
+      {/* The single-space placeholder is what makes :placeholder-shown track "empty" */}
+      <Tag id={id} placeholder=" " className={`${FIELD_CLASS} ${className}`} {...props} />
+      <label htmlFor={id} className={LABEL_CLASS}>
+        {label}
+      </label>
+    </div>
+  )
+}
+
 export default function Contact() {
   const currentYear = new Date().getFullYear()
+  const shakeControls = useAnimationControls()
 
   // Form State
   const [formData, setFormData] = useState({
@@ -36,6 +59,14 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
+  const failSubmission = () => {
+    setStatus('error')
+    shakeControls.start({
+      x: [0, -10, 10, -7, 7, -3, 3, 0],
+      transition: { duration: 0.5, ease: 'easeInOut' },
+    })
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) return
@@ -53,11 +84,11 @@ export default function Contact() {
         setStatus('success')
         setFormData({ name: '', email: '', subject: 'Android App', message: '' })
       } else {
-        setStatus('error')
+        failSubmission()
       }
     } catch (err) {
       console.warn('API submission failed, offering direct fallback:', err)
-      setStatus('error')
+      failSubmission()
     }
   }
 
@@ -72,7 +103,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-[100dvh] lg:h-[100dvh] relative bg-transparent flex flex-col justify-between pt-12 sm:pt-14 pb-4 sm:pb-5 px-4 sm:px-6 lg:px-8 overflow-hidden z-10"
+      className="min-h-[100dvh] relative bg-transparent flex flex-col justify-between pt-12 sm:pt-14 pb-4 sm:pb-5 px-4 sm:px-6 lg:px-8 overflow-hidden z-10"
     >
       {/* ── Subtle 3D Ambient Element in the Background ── */}
       <ContactScene />
@@ -81,17 +112,19 @@ export default function Contact() {
       <div className="max-w-5xl mx-auto w-full relative z-10 my-auto">
 
         {/* Section Header */}
-        <ScrollReveal yOffset={15} className="mb-4 sm:mb-6">
-          <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full border border-white/10 bg-white/[0.03] text-[10px] font-mono text-slate-300 uppercase tracking-wider mb-2">
-            Get In Touch
-          </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-            Let's build something exceptional.
-          </h2>
-          <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-xl">
-            Open to native Android engineering roles, backend systems, and technical collaboration.
-          </p>
-        </ScrollReveal>
+        <div className="mb-4 sm:mb-6">
+          <SectionEyebrow compact className="mb-2">Get In Touch</SectionEyebrow>
+          <RevealText
+            as="h2"
+            text="Let's build something exceptional."
+            className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight"
+          />
+          <ScrollReveal yOffset={10} delay={0.2}>
+            <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-xl">
+              Open to native Android engineering roles, backend systems, and technical collaboration.
+            </p>
+          </ScrollReveal>
+        </div>
 
         {/* 2-Column Minimalist Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-start">
@@ -169,7 +202,10 @@ export default function Contact() {
 
           {/* Right Column: Clean Minimalist Form */}
           <div className="lg:col-span-7">
-            <div className="p-4 sm:p-5 lg:p-6 rounded-2xl border border-white/[0.12] border-t-white/[0.25] bg-white/[0.03] backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.45)] relative">
+            <motion.div
+              animate={shakeControls}
+              className="p-4 sm:p-5 lg:p-6 rounded-2xl border border-white/[0.12] border-t-white/[0.25] bg-white/[0.03] backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.45)] relative"
+            >
 
               <AnimatePresence mode="wait">
                 {status === 'success' ? (
@@ -180,11 +216,35 @@ export default function Contact() {
                     exit={{ opacity: 0, scale: 0.96 }}
                     className="py-10 flex flex-col items-center justify-center text-center"
                   >
-                    <div className="w-10 h-10 rounded-full bg-emerald-500/15 border border-emerald-500/30 backdrop-blur-md flex items-center justify-center text-emerald-400 mb-3 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    {/* Ring and checkmark draw themselves */}
+                    <motion.div
+                      initial={{ scale: 0.6 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: 'spring', stiffness: 260, damping: 16 }}
+                      className="w-12 h-12 rounded-full bg-emerald-500/15 backdrop-blur-md text-emerald-400 mb-3"
+                    >
+                      <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none" stroke="currentColor">
+                        <motion.circle
+                          cx="24"
+                          cy="24"
+                          r="22.5"
+                          strokeWidth="1.5"
+                          strokeOpacity="0.55"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 0.6, ease: 'easeOut' }}
+                        />
+                        <motion.path
+                          d="M15 24.5l6.5 6.5L33.5 18"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 0.4, delay: 0.45, ease: 'easeOut' }}
+                        />
                       </svg>
-                    </div>
+                    </motion.div>
                     <h4 className="text-base font-bold text-white mb-1">Message Received</h4>
                     <p className="text-xs text-slate-400 max-w-xs mb-4 leading-relaxed">
                       Thank you for reaching out. I'll get back to you within 24 hours.
@@ -223,47 +283,50 @@ export default function Contact() {
 
                     {/* Name & Email Row */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <div>
-                        <input
-                          type="text"
-                          name="name"
-                          required
-                          value={formData.name}
-                          onChange={handleChange}
-                          placeholder="Your Name"
-                          className="w-full px-3 py-2 rounded-xl border border-white/10 border-t-white/[0.18] bg-white/[0.03] backdrop-blur-md text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 focus:bg-white/[0.07] focus:ring-1 focus:ring-sky-400/30 transition-all shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]"
-                        />
-                      </div>
-
-                      <div>
-                        <input
-                          type="email"
-                          name="email"
-                          required
-                          value={formData.email}
-                          onChange={handleChange}
-                          placeholder="Email Address"
-                          className="w-full px-3 py-2 rounded-xl border border-white/10 border-t-white/[0.18] bg-white/[0.03] backdrop-blur-md text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 focus:bg-white/[0.07] focus:ring-1 focus:ring-sky-400/30 transition-all shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Message Textarea */}
-                    <div>
-                      <textarea
-                        name="message"
+                      <FloatingField
+                        id="contact-name"
+                        label="Your Name"
+                        type="text"
+                        name="name"
+                        autoComplete="name"
                         required
-                        rows={3}
-                        value={formData.message}
+                        value={formData.name}
                         onChange={handleChange}
-                        placeholder="Project timeline, scope, or engineering role..."
-                        className="w-full px-3 py-2 rounded-xl border border-white/10 border-t-white/[0.18] bg-white/[0.03] backdrop-blur-md text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 focus:bg-white/[0.07] focus:ring-1 focus:ring-sky-400/30 transition-all resize-none shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)]"
+                      />
+                      <FloatingField
+                        id="contact-email"
+                        label="Email Address"
+                        type="email"
+                        name="email"
+                        autoComplete="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
                       />
                     </div>
 
+                    {/* Message Textarea */}
+                    <FloatingField
+                      as="textarea"
+                      id="contact-message"
+                      label="Project timeline, scope, or engineering role..."
+                      name="message"
+                      required
+                      rows={3}
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="block resize-none"
+                    />
+
                     {/* Error fallback */}
                     {status === 'error' && (
-                      <div className="p-2.5 rounded-lg bg-red-500/10 border border-red-500/20 text-xs text-red-300 flex items-center justify-between">
+                      <motion.div
+                        role="alert"
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="p-2.5 rounded-lg bg-red-500/10 border border-red-500/20 text-xs text-red-300 flex items-center justify-between"
+                      >
                         <span>Failed to send automatically.</span>
                         <a
                           href={`mailto:${emailAddress}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(formData.message)}`}
@@ -271,7 +334,7 @@ export default function Contact() {
                         >
                           Email Directly ↗
                         </a>
-                      </div>
+                      </motion.div>
                     )}
 
                     {/* Action Bar */}
@@ -302,7 +365,7 @@ export default function Contact() {
                 )}
               </AnimatePresence>
 
-            </div>
+            </motion.div>
           </div>
 
         </div>
