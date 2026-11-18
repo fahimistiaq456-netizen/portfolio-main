@@ -159,41 +159,95 @@ export default function Skills() {
         </div>
 
         {/* Credentials / Education & Experience Bar */}
-        <ScrollReveal yOffset={20} delay={0.1} className="pt-2">
-          <p className="text-sm font-mono text-slate-400 uppercase tracking-wider mb-4 sm:mb-6"><span className="bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded">Background &amp; Credentials</span></p>
+        <ScrollReveal yOffset={20} delay={0.1} className="pt-4 sm:pt-6">
+          <div className="mb-6 sm:mb-8">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.04] text-xs sm:text-sm font-mono text-slate-300 uppercase tracking-wider">
+              Background &amp; Credentials
+            </span>
+          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            {/* Education combined box */}
-            <div className="p-6 sm:p-8 rounded-lg border border-white/20 bg-white/[0.04] backdrop-blur-lg hover:bg-white/[0.06] transition-colors duration-200">
-              <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-mono font-medium text-amber-400 bg-amber-500/10 border border-amber-500/20 mb-2">
-                Education
-              </span>
-              <ul className="list-disc list-inside text-xs text-slate-300 space-y-1">
-                <li><strong>B.Sc. Computer Science & Engineering</strong> – Mymensingh Engineering College (Affiliated with University of Dhaka)</li>
-                <li><strong>SSC (Science) – GPA 5.00</strong> – Baunia Abdul Jalil High School, Dhaka (2018)</li>
-                <li><strong>HSC (Science) – GPA 4.83</strong> – Milestone College, Dhaka (2020)</li>
-              </ul>
-            </div>
-            {/* Experience box (unchanged) */}
-            {EDUCATION.filter(e => e.tag === 'Experience').map((edu) => (
-              <div
-                key={edu.title}
-                className="p-5 sm:p-6 rounded-2xl border border-white/[0.12] border-t-white/[0.22] bg-white/[0.03] backdrop-blur-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:border-white/25 hover:bg-white/[0.05] transition-all duration-200"
-              >
-                <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-mono font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 mb-3">
-                  {edu.tag}
-                </span>
-                <h4 className="text-base font-bold text-white tracking-tight mb-1">
-                  {edu.title}
-                </h4>
-                <p className="text-xs font-medium text-slate-300 mb-1.5">
-                  {edu.institution}
-                </p>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  {edu.note}
-                </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+            {/* Education feature card */}
+            <div className="p-7 sm:p-9 lg:p-10 rounded-2xl border border-white/[0.14] border-t-white/[0.25] bg-white/[0.04] backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.45)] hover:border-white/30 hover:bg-white/[0.06] transition-all duration-300 flex flex-col justify-between min-h-[300px] sm:min-h-[340px]">
+              <div>
+                <div className="flex items-center justify-between mb-4 sm:mb-5">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/25">
+                    Education
+                  </span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-4 sm:mb-5">
+                  Academic Qualifications
+                </h3>
+                <ul className="space-y-3.5 sm:space-y-4">
+                  <li className="flex items-start gap-3">
+                    <span className="text-amber-400 mt-1 select-none text-sm">✦</span>
+                    <div>
+                      <strong className="text-white font-bold block text-sm sm:text-base">
+                        B.Sc. in Computer Science &amp; Engineering
+                      </strong>
+                      <span className="text-slate-300 text-xs sm:text-sm leading-relaxed block mt-0.5">
+                        Mymensingh Engineering College{' '}
+                        <span className="text-slate-400">(Affiliated with the University of Dhaka)</span>
+                      </span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-amber-400 mt-1 select-none text-sm">✦</span>
+                    <div>
+                      <strong className="text-white font-bold block text-sm sm:text-base">
+                        Higher Secondary Certificate (HSC) — GPA 4.83
+                      </strong>
+                      <span className="text-slate-300 text-xs sm:text-sm block mt-0.5">
+                        Milestone College, Dhaka <span className="text-slate-400 font-mono">(2020)</span>
+                      </span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-amber-400 mt-1 select-none text-sm">✦</span>
+                    <div>
+                      <strong className="text-white font-bold block text-sm sm:text-base">
+                        Secondary School Certificate (SSC) — GPA 5.00
+                      </strong>
+                      <span className="text-slate-300 text-xs sm:text-sm block mt-0.5">
+                        Baunia Abdul Jalil High School, Dhaka <span className="text-slate-400 font-mono">(2018)</span>
+                      </span>
+                    </div>
+                  </li>
+                </ul>
               </div>
-            ))}
+            </div>
+
+            {/* Experience feature card */}
+            <div className="p-7 sm:p-9 lg:p-10 rounded-2xl border border-white/[0.14] border-t-white/[0.25] bg-white/[0.04] backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.45)] hover:border-white/30 hover:bg-white/[0.06] transition-all duration-300 flex flex-col justify-between min-h-[300px] sm:min-h-[340px]">
+              <div>
+                <div className="flex items-center justify-between mb-4 sm:mb-5">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/25">
+                    Experience
+                  </span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-1.5 sm:mb-2">
+                  Software Engineering Experience
+                </h3>
+                <p className="text-sm sm:text-base font-semibold text-sky-400 mb-4 sm:mb-5 flex items-center gap-2 font-mono">
+                  softtrills.com
+                </p>
+                <div className="space-y-3.5 sm:space-y-4">
+                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+                    Hands-on product development applying modern toolchains, native Android architecture, and disciplined software engineering workflows.
+                  </p>
+                  <ul className="space-y-2.5 text-xs sm:text-sm text-slate-300 pt-1">
+                    <li className="flex items-start gap-2.5">
+                      <span className="text-emerald-400 mt-0.5 select-none">✦</span>
+                      <span>Production Android engineering with Kotlin, Jetpack Compose, Coroutines, and clean MVVM.</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="text-emerald-400 mt-0.5 select-none">✦</span>
+                      <span>Robust backend integration, REST API contracts, and scalable local storage implementations.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </ScrollReveal>
 
