@@ -5,6 +5,7 @@
   "private": true,
   "description": "Full-stack portfolio — React frontend + Vercel serverless API",
   "scripts": {
+    "dev": "concurrently -k -n api,web -c cyan,magenta \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "node api/server.js",
     "start:backend": "node api/server.js",
@@ -12,5 +13,8 @@
     "install:frontend": "node install-vercel.js",
     "lint": "cd frontend && npm run lint",
     "preview": "cd frontend && npm run preview"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.7"
   }
 }

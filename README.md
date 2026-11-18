@@ -17,6 +17,7 @@ porfolio-main/
 │   │   └── utils.js        # Static data loaders & CORS helpers
 │   ├── contact.js          # POST /api/contact
 │   ├── index.js            # GET  /api (API status & endpoints discovery)
+│   ├── package.json        # Marks api/ as CommonJS (root package is ESM)
 │   ├── projects.js         # GET  /api/projects
 │   ├── server.js           # Local standalone Node.js development server
 │   └── skills.js           # GET  /api/skills
@@ -69,22 +70,25 @@ cp .env.example .env
 
 ### 3. Run Locally
 
-#### Option A: Full-Stack with Vercel CLI (Recommended)
-Runs frontend and serverless API endpoints concurrently on `http://localhost:3000`:
+Start the frontend and the backend API together:
 
 ```bash
 npm run dev
 ```
 
-#### Option B: Standalone Frontend & Backend
-In Terminal 1 (Backend API on `http://localhost:5001`):
-```bash
-npm run dev:backend
-```
+| Service | URL |
+| :--- | :--- |
+| Frontend (Vite) | `http://localhost:5173` |
+| Backend API | `http://localhost:5001/api` |
+| API through the frontend | `http://localhost:5173/api` (proxied to the backend) |
 
-In Terminal 2 (Vite Frontend on `http://localhost:5173`):
+The frontend calls same-origin `/api` routes, and the Vite dev server proxies them to the backend, so no extra configuration is needed. Both processes read the root `.env` file.
+
+To run them separately instead:
+
 ```bash
-npm run dev:frontend
+npm run dev:backend    # Terminal 1 — API on http://localhost:5001
+npm run dev:frontend   # Terminal 2 — Vite on http://localhost:5173
 ```
 
 ---
@@ -149,8 +153,14 @@ Client-side variables must start with `VITE_`.
 
 | Variable | Required | Description |
 | :--- | :---: | :--- |
-| `VITE_API_BASE_URL` | Optional | Override API base URL. **Leave blank in production on Vercel** — the app automatically uses same-origin `/api` serverless routes. |
-| `VITE_API_PROXY_TARGET` | Optional | Proxy target for local Vite development (`http://localhost:5001` or `http://localhost:3000`). |
+| `VITE_API_BASE_URL` | Optional | Override API base URL. **Leave blank** — the app uses same-origin `/api` routes (serverless on Vercel, proxied by Vite locally). |
+| `VITE_API_PROXY_TARGET` | Optional | Where the Vite dev server proxies `/api`. Defaults to `http://localhost:5001`. |
+
+### Local Backend Variables
+
+| Variable | Required | Description |
+| :--- | :---: | :--- |
+| `PORT` | Optional | Port for the standalone local API server. Defaults to `5001`; keep `VITE_API_PROXY_TARGET` in sync if you change it. |
 
 ---
 
