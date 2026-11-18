@@ -1,4 +1,12 @@
 const http = require('http');
+const fs = require('fs');
+const path = require('path');
+
+// Load the repo-root .env for local development (Vercel injects env vars itself)
+const envPath = path.join(__dirname, '..', '.env');
+if (fs.existsSync(envPath)) {
+  process.loadEnvFile(envPath);
+}
 
 const indexHandler = require('./index');
 const projectsHandler = require('./projects');

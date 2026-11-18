@@ -1,3 +1,17 @@
+import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion'
+
+const MAX_TILT_DEG = 3.5
+const TILT_SPRING = { stiffness: 180, damping: 20, mass: 0.6 }
+
+// Add perspective only while the card is actually tilted. A bare perspective() on a
+// backdrop-blurred element makes Chromium render its text blurry, so stay at "none" when flat.
+const tiltTransformTemplate = (_, generated) =>
+  generated ? `perspective(1000px) ${generated}` : 'none'
+
+// Slow pan + zoom across the screenshot while the card is hovered, quick settle on leave
+const SCREENSHOT_CLASS =
+  'w-full h-full object-cover object-[0%_0%] transition-[object-position,scale] duration-700 ease-out group-hover:object-[100%_100%] group-hover:scale-[1.06] group-hover:duration-[2800ms] group-hover:ease-in-out'
+
 function DeviceMockup({ project }) {
   const isPhone = project.mockupType === 'phone'
 
@@ -19,7 +33,7 @@ function DeviceMockup({ project }) {
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover object-top"
+              className={SCREENSHOT_CLASS}
             />
 
             {/* Bottom Home Indicator Bar */}
@@ -67,7 +81,7 @@ function DeviceMockup({ project }) {
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover object-top"
+            className={SCREENSHOT_CLASS}
           />
           {/* Subtle screen gloss */}
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-white/[0.04] pointer-events-none" />
@@ -83,19 +97,60 @@ export default function ProjectCard({ project, index }) {
   const num = index ? String(index).padStart(2, '0') : ''
   const primaryHref = project.live || project.github || '#'
 
+  const reduceMotion = useReducedMotion()
+
+  // Pointer-driven tilt (spring-smoothed) and a glow that follows the cursor
+  const tiltXTarget = useMotionValue(0)
+  const tiltYTarget = useMotionValue(0)
+  const rotateX = useSpring(tiltXTarget, TILT_SPRING)
+  const rotateY = useSpring(tiltYTarget, TILT_SPRING)
+  const glowX = useMotionValue(0)
+  const glowY = useMotionValue(0)
+
+  const handlePointerMove = (e) => {
+    if (e.pointerType !== 'mouse') return
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    glowX.set(x)
+    glowY.set(y)
+    if (reduceMotion) return
+    tiltXTarget.set((0.5 - y / rect.height) * 2 * MAX_TILT_DEG)
+    tiltYTarget.set((x / rect.width - 0.5) * 2 * MAX_TILT_DEG)
+  }
+
+  const handlePointerLeave = () => {
+    tiltXTarget.set(0)
+    tiltYTarget.set(0)
+  }
+
   return (
-    <article className="rounded-2xl border border-white/[0.12] border-t-white/[0.25] bg-white/[0.03] backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.45)] hover:border-white/25 hover:bg-white/[0.05] flex flex-col justify-between h-full transition-all duration-300 overflow-hidden group">
+    <motion.article
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      style={{ rotateX, rotateY }}
+      transformTemplate={tiltTransformTemplate}
+      className="relative rounded-2xl border border-white/[0.12] border-t-white/[0.25] bg-white/[0.03] backdrop-blur-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.45)] hover:border-white/25 hover:bg-white/[0.05] hover:will-change-transform flex flex-col justify-between h-full transition-colors duration-300 overflow-hidden group"
+    >
+      {/* Cursor-following glow: a fixed-size disc moved with a transform, so following the
+          pointer never repaints the card */}
+      <motion.div
+        aria-hidden="true"
+        style={{ x: glowX, y: glowY }}
+        className="pointer-events-none absolute -left-80 -top-80 z-20 h-[640px] w-[640px] rounded-full bg-[radial-gradient(circle_closest-side,rgba(56,189,248,0.14),transparent)] opacity-0 group-hover:opacity-100 group-hover:will-change-transform transition-opacity duration-300"
+      />
+
       <div>
         {/* ── Smart Mockup Stage ── */}
         <div className="relative w-full aspect-[16/9.5] overflow-hidden border-b border-white/[0.08]">
           <DeviceMockup project={project} />
 
-          {/* Hover Explore Action Pill */}
+          {/* Hover Explore Action Pill — anchored to the bottom so the panning screenshot stays visible */}
           <a
             href={primaryHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute inset-0 z-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/45 backdrop-blur-[2px]"
+            className="absolute inset-0 z-30 flex items-end justify-center pb-3 sm:pb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-[#090a0f] text-xs font-bold tracking-tight shadow-2xl transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
               <span>{isLive ? 'Open Live App' : 'View on GitHub'}</span>
@@ -239,6 +294,6 @@ export default function ProjectCard({ project, index }) {
           </a>
         )}
       </div>
-    </article>
+    </motion.article>
   )
 }

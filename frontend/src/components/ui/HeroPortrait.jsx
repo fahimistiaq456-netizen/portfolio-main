@@ -39,7 +39,7 @@ export default function HeroPortrait() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full max-w-[160px] xs:max-w-[180px] sm:max-w-[320px] lg:max-w-[380px] h-[150px] xs:h-[165px] sm:h-[300px] md:h-[380px] lg:h-[440px] flex items-end justify-center select-none"
+      className="relative w-full max-w-[260px] sm:max-w-[320px] lg:max-w-[380px] h-[clamp(150px,30dvh,270px)] sm:h-[300px] md:h-[380px] lg:h-[440px] flex items-end justify-center select-none"
     >
       {/* ── Atmospheric Studio Spotlight Glow behind cutout ── */}
       <motion.div

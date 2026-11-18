@@ -1,11 +1,18 @@
 import { useRef, useState, useEffect } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 
 function FloatingCore() {
   const meshRef = useRef()
   const ringRef = useRef()
   const ring2Ref = useRef()
   const particlesRef = useRef()
+
+  // Keep the object clear of the heading and body text: beside the form on wide screens,
+  // tucked behind the (frosted) form card on tall, narrow ones.
+  const viewport = useThree((state) => state.viewport)
+  const isWide = viewport.aspect > 1
+  const position = isWide ? [viewport.width * 0.28, -0.3, 0] : [0, -viewport.height * 0.2, 0]
+  const scale = isWide ? 0.72 : Math.min(0.72, Math.max(0.3, viewport.width / 4.2))
 
   useFrame(({ clock }) => {
     const t = clock.elapsedTime
@@ -44,7 +51,7 @@ function FloatingCore() {
   ])
 
   return (
-    <group position={[0.4, 0, 0]}>
+    <group position={position} scale={scale}>
       {/* Central Geometric Core */}
       <mesh ref={meshRef}>
         <icosahedronGeometry args={[1.25, 1]} />
@@ -52,7 +59,7 @@ function FloatingCore() {
           color="#38bdf8"
           wireframe
           transparent
-          opacity={0.35}
+          opacity={0.22}
         />
       </mesh>
 
@@ -62,20 +69,20 @@ function FloatingCore() {
         <meshBasicMaterial
           color="#2dd4bf"
           transparent
-          opacity={0.25}
+          opacity={0.16}
         />
       </mesh>
 
       {/* Orbital Accent Ring 1 */}
       <mesh ref={ringRef} rotation={[Math.PI / 3, 0, 0]}>
         <torusGeometry args={[1.9, 0.012, 8, 48]} />
-        <meshBasicMaterial color="#38bdf8" transparent opacity={0.22} />
+        <meshBasicMaterial color="#38bdf8" transparent opacity={0.16} />
       </mesh>
 
       {/* Orbital Accent Ring 2 */}
       <mesh ref={ring2Ref} rotation={[-Math.PI / 4, Math.PI / 6, 0]}>
         <torusGeometry args={[2.3, 0.008, 8, 48]} />
-        <meshBasicMaterial color="#2dd4bf" transparent opacity={0.18} />
+        <meshBasicMaterial color="#2dd4bf" transparent opacity={0.12} />
       </mesh>
 
       {/* Micro-spark Points */}
