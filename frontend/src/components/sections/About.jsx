@@ -6,8 +6,8 @@ export default function About() {
   return (
     <section id="about" className="py-24 sm:py-32 relative">
       {/* Background ambient glow spots */}
-      <div className="absolute top-[20%] left-[-5%] w-[420px] h-[420px] bg-glow-spot bg-[radial-gradient(circle,rgba(19,230,196,0.08)_0%,transparent_70%)]" />
-      <div className="absolute bottom-[10%] right-[-5%] w-[450px] h-[450px] bg-glow-spot bg-[radial-gradient(circle,rgba(99,102,241,0.07)_0%,transparent_70%)]" />
+      
+      
 
       <div ref={sectionRef} className="section-fade relative max-w-7xl mx-auto px-5 sm:px-6 w-full z-10">
         

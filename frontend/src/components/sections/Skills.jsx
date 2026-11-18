@@ -97,10 +97,7 @@ const EDUCATION = [
 export default function Skills() {
   return (
     <section id="skills" className="py-16 sm:py-24 lg:py-32 relative bg-transparent">
-      {/* Glassmorphism vector background */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
-        <svg viewBox="0 0 200 200" className="w-64 h-64 text-white/20 fill-current"><circle cx="100" cy="100" r="80" /></svg>
-      </div>
+
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
@@ -163,13 +160,11 @@ export default function Skills() {
 
         {/* Credentials / Education & Experience Bar */}
         <ScrollReveal yOffset={20} delay={0.1} className="pt-2">
-          <p className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-4 sm:mb-6">
-            Background &amp; Credentials
-          </p>
+          <p className="text-sm font-mono text-slate-400 uppercase tracking-wider mb-4 sm:mb-6"><span className="bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded">Background &amp; Credentials</span></p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {/* Education combined box */}
-            <div className="p-4 sm:p-5 rounded-md border border-white/20 bg-white/[0.04] backdrop-blur-lg hover:bg-white/[0.06] transition-colors duration-200">
+            <div className="p-6 sm:p-8 rounded-lg border border-white/20 bg-white/[0.04] backdrop-blur-lg hover:bg-white/[0.06] transition-colors duration-200">
               <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-mono font-medium text-amber-400 bg-amber-500/10 border border-amber-500/20 mb-2">
                 Education
               </span>

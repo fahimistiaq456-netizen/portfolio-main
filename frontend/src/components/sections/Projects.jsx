@@ -29,10 +29,7 @@ export default function Projects({ projects = [] }) {
 
   return (
     <section id="projects" className="py-16 sm:py-24 lg:py-32 relative bg-transparent">
-      {/* Glassmorphism vector background */}
-      <div className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center opacity-10">
-        <svg viewBox="0 0 200 200" className="w-64 h-64 text-white/20 fill-current"><circle cx="100" cy="100" r="80" /></svg>
-      </div>
+
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
